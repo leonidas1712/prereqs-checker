@@ -29,7 +29,7 @@ type ScrollProps = {
 function ScrollContent(props:React.PropsWithChildren<ScrollProps>) {
   const commonStyle = {
     overflow: 'auto',
-    padding:"0.5rem",
+    padding:"0.4rem",
   };
   return (
     <ScrollArea style={{...props.style, ...commonStyle}} type="auto" bg="blue">
@@ -54,12 +54,12 @@ function Test3() {
   return (
     <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
       <ScrollContent style={topStyle}>
-       <Repeat n={30} text="Hi first"/>
+       <Repeat n={2} text="Hi first"/>
       </ScrollContent>
       <Space/>
 
      <ScrollContent style={bottomStyle}>
-       <Repeat n={30} text="Hi second"/>
+       <Repeat n={1} text="Hi second"/>
      </ScrollContent>
     </Flex>
   );
