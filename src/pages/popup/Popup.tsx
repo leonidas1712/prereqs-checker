@@ -153,9 +153,12 @@ function ToggleModsBtn(props:ShowModsProps) {
     setShowMods(!showMods);
   };
 
+  const label=showMods ? "Hide mods" : "Show mods";
+  const icon = showMods ? <FaEyeSlash size="1.1rem"/> : <FaEye size="1.1rem" />
+
   return (
-    <Tooltip label="Tooltip" color="teal">
-    <ActionIcon component="button" onClick={click} color="dark"><FaEye size="1.4rem"/></ActionIcon>
+    <Tooltip label={label} color="teal">
+      <ActionIcon component="button" onClick={click} color="dark">{icon}</ActionIcon>
     </Tooltip>
   )
 }
@@ -171,7 +174,7 @@ function Header(props:ShowModsProps) {
 
 
 const Popup = () => {
-  const [showMods, setShowMods] = useState(true);
+  const [showMods, setShowMods] = useState(false);
   // const modsValue = { showMods, setShowMods };
   // const ShowModsContext = createContext<ShowModsProps>(modsValue);
 
