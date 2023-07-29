@@ -8,8 +8,8 @@ const manifest: chrome.runtime.ManifestV3 = {
   name: packageJson.name,
   version: packageJson.version,
   description: packageJson.description,
-  options_page: "src/pages/options/index.html",
-  background: {
+  options_page: "src/pages/options/index.html", //
+  background: { // extension service worker: https://developer.chrome.com/docs/extensions/mv3/manifest/background/
     service_worker: "src/pages/background/index.js",
     type: "module",
   },
