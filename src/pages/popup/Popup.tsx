@@ -48,7 +48,7 @@ function Test3() {
   };
 
   const bottomStyle:React.CSSProperties = {
-    flex: '1.2',
+    flex: '2',
     // maxHeight:"50%",
     backgroundColor:"green"
     // height: "80%",
@@ -65,23 +65,17 @@ function Test3() {
   return (
     <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
       <ScrollContent style={topStyle}>
-
-        <Repeat n={3} text="Hi first"/>
-
-
         <Group position="center" mb={5}>
-          <Button onClick={clickToggle} color="pink"><Text>Toggle modules</Text></Button>
+          <Button onClick={() => setShowMods(!showMods)} color="pink"><Text>Toggle modules</Text></Button>
         </Group>
+
+        <Repeat n={15} text="Hi first"/>
       </ScrollContent>
 
       {/* Modules */}
-      {true ? <ScrollContent style={bottomStyle}>
-        <Collapse in={opened}>
-          <Repeat n={3} text="Hi second"/>
-        </Collapse>
+      { showMods ? <ScrollContent style={bottomStyle}>
+          <Repeat n={30} text="Hi second"/>
       </ScrollContent> : <></>}
-      
-     
     </Flex>
   );
 }
