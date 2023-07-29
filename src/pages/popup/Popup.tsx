@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "@assets/img/logo.svg";
 import "@pages/popup/Popup.css";
 import { Container, Text, Accordion, Center, Box, ScrollArea, Flex, Space, Collapse, Button, Group } from "@mantine/core";
 import { useDisclosure } from '@mantine/hooks';
 import { replicate } from "fp-ts/lib/Array";
+
 
 // const Mods = () => {
 //   return <Accordion variant="separated" radius="sm" defaultValue="mods"
@@ -24,7 +25,7 @@ const CONTENT_HEIGHT_PCT=`${CONTENT_HEIGHT_PCT_INT}%`;
 const HEADER_HEIGHT_PCT=`${100-CONTENT_HEIGHT_PCT_INT}%`
 
 type ScrollProps = {
-  style:React.CSSProperties
+  style?:React.CSSProperties
 };
 
 function ScrollContent(props:React.PropsWithChildren<ScrollProps>) {
@@ -48,25 +49,79 @@ function Test3() {
 
   const bottomStyle:React.CSSProperties = {
     flex: '1.2',
+    // maxHeight:"50%",
     backgroundColor:"green"
     // height: "80%",
   };
 
-  // const [opened, { toggle }] = useDisclosure(false);
+  const [opened, { toggle }] = useDisclosure(false);
+  const [showMods, setShowMods] = useState(true);
+
+  const clickToggle = () => {
+    toggle();
+    setShowMods(!showMods);
+  };
 
   return (
     <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
       <ScrollContent style={topStyle}>
 
-      <Button color="pink"><Text color="orange">Toggle</Text></Button>
-      
+        <Repeat n={3} text="Hi first"/>
 
-       {/* <Repeat n={2} text="Hi first"/> */}
+
+        <Group position="center" mb={5}>
+          <Button onClick={clickToggle} color="pink"><Text>Toggle modules</Text></Button>
+        </Group>
       </ScrollContent>
 
-     <ScrollContent style={bottomStyle}>
-       <Repeat n={1} text="Hi second"/>
-     </ScrollContent>
+      {/* Modules */}
+      {true ? <ScrollContent style={bottomStyle}>
+        <Collapse in={opened}>
+          <Repeat n={3} text="Hi second"/>
+        </Collapse>
+      </ScrollContent> : <></>}
+      
+     
+    </Flex>
+  );
+}
+
+function TestAll() {
+  const topStyle:React.CSSProperties = {
+    flex: '1',
+    // backgroundColor:"cyan"
+    // height: "20%",
+  };
+
+  const bottomStyle:React.CSSProperties = {
+    flex: '1.2',
+    // maxHeight:"50%",
+    backgroundColor:"green"
+    // height: "80%",
+  };
+
+  const [opened, { toggle }] = useDisclosure(false);
+
+  return (
+    <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
+      <ScrollContent style={topStyle}>
+
+        <Repeat n={5} text="Hi first"/>
+
+
+        <Group position="center" mb={5}>
+          <Button onClick={toggle} color="pink"><Text>Toggle modules</Text></Button>
+        </Group>
+
+        <Collapse in={opened}>
+          <Repeat n={30} text="Hi second"/>
+        </Collapse>
+      </ScrollContent>
+
+      {/* <ScrollContent style={bottomStyle}>
+        
+      </ScrollContent> */}
+     
     </Flex>
   );
 }
