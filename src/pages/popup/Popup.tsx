@@ -29,9 +29,9 @@ type ScrollProps = {
 };
 
 function ScrollContent(props:React.PropsWithChildren<ScrollProps>) {
-  const commonStyle = {
+  const commonStyle:React.CSSProperties = {
     overflow: 'auto',
-    padding:"0.4rem",
+    padding:"0.5rem",
   };
   return (
     <ScrollArea style={{...props.style, ...commonStyle}} type="auto">
@@ -48,7 +48,7 @@ function Content() {
   };
 
   const bottomStyle:React.CSSProperties = {
-    flex: '2',
+    flex: '1.2',
     // maxHeight:"50%",
     backgroundColor:"green"
     // height: "80%",
@@ -122,7 +122,7 @@ function TestAll() {
 
 function Repeat({ n, text }: { n:number, text:string })  {
   const mapper = (txt: string, idx: number) => {
-    return <Text fz="lg">{`${idx+1}. ${txt}`}</Text>
+    return <Text fz="md">{`${idx+1}. ${txt}`}</Text>
   };
 
   return (
@@ -134,9 +134,9 @@ function Repeat({ n, text }: { n:number, text:string })  {
 
 function Header() {
   return (
-    <Box h={HEADER_HEIGHT_PCT} bg="red">
-      <Text fz="xl" align="center">Prerequisites Checker</Text>
-    </Box>
+    <Flex h={HEADER_HEIGHT_PCT} bg="red" justify={"center"} align={"center"}>
+      <Text fz="lg" align="center">Prerequisites Checker</Text>
+    </Flex>
   );
 }
 
