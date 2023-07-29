@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "@pages/popup/index.css";
 import Popup from "@pages/popup/Popup";
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
+import { MantineProvider } from "@mantine/core";
 
 refreshOnUpdate("pages/popup");
 
@@ -12,7 +13,14 @@ function init() {
     throw new Error("Can not find #app-container");
   }
   const root = createRoot(appContainer);
-  root.render(<Popup />);
+  root.render(
+  <MantineProvider theme={{
+    // Font from NUSMods
+    fontFamily: "-apple-system, BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
+  }}>
+    <Popup />
+  </MantineProvider>
+  );
 }
 
 init();
