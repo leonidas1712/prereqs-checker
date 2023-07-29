@@ -82,7 +82,13 @@ const Popup = () => {
   };
 
   return (
-     <Test/>
+    <Box h="100%">
+      <Box h="5%" bg="red">
+        <Text fz="xl" align="center">Prerequisites Checker</Text>
+      </Box>
+      <Test/>
+    </Box>
+     
   );
 };
 
