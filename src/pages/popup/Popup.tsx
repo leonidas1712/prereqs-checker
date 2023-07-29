@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import logo from "@assets/img/logo.svg";
 import "@pages/popup/Popup.css";
-import { Container, Text, Accordion, Center, Box, ScrollArea, Flex, Space, Collapse, Button, Group } from "@mantine/core";
+import { Container, Text, Accordion, Center, Box, ScrollArea, Flex, Space, Collapse, Button, Group, ActionIcon, Tooltip } from "@mantine/core";
 import { useDisclosure } from '@mantine/hooks';
 import { replicate } from "fp-ts/lib/Array";
+
+import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 
 
 // const Mods = () => {
@@ -66,7 +68,12 @@ function Content() {
     <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
       <ScrollContent style={topStyle}>
         <Group position="center" mb={5}>
-          <Button onClick={() => setShowMods(!showMods)} color="pink"><Text>Toggle modules</Text></Button>
+          {/* <Button leftIcon={<FaEye />} onClick={() => setShowMods(!showMods)} color="pink"><Text>Toggle modules</Text></Button> */}
+
+          {/* <Tooltip label="Tooltip" color="teal">
+            <ActionIcon component="button" onClick={() => setShowMods(!showMods)} color="dark"><FaEye size="1.4rem"/></ActionIcon>
+          </Tooltip> */}
+
         </Group>
 
         <Repeat n={15} text="Hi first"/>
@@ -132,18 +139,34 @@ function Repeat({ n, text }: { n:number, text:string })  {
   )
 }
 
-function Header() {
+type ShowModsProps = {
+  showMods: boolean, 
+  setShowMods: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+function ToggleModsBtn(props:ShowModsProps) {
+  const { showMods, setShowMods } = props;
   return (
-    <Flex h={HEADER_HEIGHT_PCT} bg="red" justify={"center"} align={"center"}>
+    <Tooltip label="Tooltip" color="teal">
+    <ActionIcon component="button" onClick={() => setShowMods(!showMods)} color="dark"><FaEye size="1.4rem"/></ActionIcon>
+    </Tooltip>
+  )
+}
+
+function Header({ showMods, setShowMods }: ShowModsProps) {
+  return (
+    <Flex h={HEADER_HEIGHT_PCT} bg="indigo" justify={"center"} align={"center"}>
       <Text fz="lg" align="center">Prerequisites Checker</Text>
+      <ToggleModsBtn showMods={showMods} setShowMods={setShowMods} />
     </Flex>
   );
 }
 
 const Popup = () => {
+  const [showMods, setShowMods] = useState(true);
   return (
     <Box h="100%">  
-      <Header />
+      <Header showMods={showMods} setShowMods={setShowMods}/>
       <Content/>
     </Box>
   );
