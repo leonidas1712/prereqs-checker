@@ -6,6 +6,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { replicate } from "fp-ts/lib/Array";
 
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
+import { createContext, useContext } from "react";
 
 
 // const Mods = () => {
@@ -42,7 +43,7 @@ function ScrollContent(props:React.PropsWithChildren<ScrollProps>) {
   )
 }
 
-function Content() {
+function Content(props:ShowModsProps) {
   const topStyle:React.CSSProperties = {
     flex: '1',
     // backgroundColor:"cyan"
@@ -57,7 +58,8 @@ function Content() {
   };
 
   const [opened, { toggle }] = useDisclosure(false);
-  const [showMods, setShowMods] = useState(true);
+  // const [showMods, setShowMods] = useState(true);
+  const { showMods, setShowMods } = props;
 
   const clickToggle = () => {
     toggle();
@@ -146,29 +148,38 @@ type ShowModsProps = {
 
 function ToggleModsBtn(props:ShowModsProps) {
   const { showMods, setShowMods } = props;
+  const click = () => {
+    console.log("Show mods", showMods);
+    setShowMods(!showMods);
+  };
+
   return (
     <Tooltip label="Tooltip" color="teal">
-    <ActionIcon component="button" onClick={() => setShowMods(!showMods)} color="dark"><FaEye size="1.4rem"/></ActionIcon>
+    <ActionIcon component="button" onClick={click} color="dark"><FaEye size="1.4rem"/></ActionIcon>
     </Tooltip>
   )
 }
 
-function Header({ showMods, setShowMods }: ShowModsProps) {
+function Header(props:ShowModsProps) {
   return (
     <Flex h={HEADER_HEIGHT_PCT} bg="indigo" justify={"center"} align={"center"}>
       <Text fz="lg" align="center">Prerequisites Checker</Text>
-      <ToggleModsBtn showMods={showMods} setShowMods={setShowMods} />
+      <ToggleModsBtn showMods={props.showMods} setShowMods={props.setShowMods} />
     </Flex>
   );
 }
 
+
 const Popup = () => {
   const [showMods, setShowMods] = useState(true);
+  // const modsValue = { showMods, setShowMods };
+  // const ShowModsContext = createContext<ShowModsProps>(modsValue);
+
   return (
-    <Box h="100%">  
-      <Header showMods={showMods} setShowMods={setShowMods}/>
-      <Content/>
-    </Box>
+      <Box h="100%">  
+        <Header showMods={showMods} setShowMods={setShowMods}/>
+        <Content showMods={showMods} setShowMods={setShowMods}/>
+      </Box>
   );
 };
 
