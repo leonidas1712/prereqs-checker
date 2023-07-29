@@ -20,7 +20,7 @@ import { replicate } from "fp-ts/lib/Array";
 // };
 
 
-const CONTENT_HEIGHT_PCT_INT=95;
+const CONTENT_HEIGHT_PCT_INT=93;
 const CONTENT_HEIGHT_PCT=`${CONTENT_HEIGHT_PCT_INT}%`;
 const HEADER_HEIGHT_PCT=`${100-CONTENT_HEIGHT_PCT_INT}%`
 
@@ -40,7 +40,7 @@ function ScrollContent(props:React.PropsWithChildren<ScrollProps>) {
   )
 }
 
-function Test3() {
+function Content() {
   const topStyle:React.CSSProperties = {
     flex: '1',
     // backgroundColor:"cyan"
@@ -132,14 +132,19 @@ function Repeat({ n, text }: { n:number, text:string })  {
   )
 }
 
+function Header() {
+  return (
+    <Box h={HEADER_HEIGHT_PCT} bg="red">
+      <Text fz="xl" align="center">Prerequisites Checker</Text>
+    </Box>
+  );
+}
+
 const Popup = () => {
   return (
-    <Box h="100%">
-      <Box h={HEADER_HEIGHT_PCT} bg="red">
-        <Text fz="xl" align="center">Prerequisites Checker</Text>
-      </Box>
-
-      <Test3/>
+    <Box h="100%">  
+      <Header />
+      <Content/>
     </Box>
   );
 };
