@@ -21,9 +21,15 @@ const Mods = () => {
         <Text fz="xl">hi</Text>
       </Box> */}
 
+const CONTENT_HEIGHT_PCT_INT=95;
+const CONTENT_HEIGHT_PCT=`${CONTENT_HEIGHT_PCT_INT}%`;
+const HEADER_HEIGHT_PCT=`${100-CONTENT_HEIGHT_PCT_INT}%`
+
+
+
 function Test() {
   return (
-    <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:"100%"}}>
+    <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
       <Box bg="blue" style={{flex: 1}}><Text fz="xl">hi2</Text></Box>
       <Box bg="cyan" style={{flex: 1.3}}><Text fz="xl">hi3</Text></Box>
     </Flex>
@@ -52,8 +58,9 @@ function Content() {
   };
 
   return (
-    <Stack spacing="xs" h="600px" style={{
+    <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{
      alignContent:"center",
+     height:"100%"
    }}>
      <ScrollArea style={topStyle} type="auto" bg="white">
        <Repeat n={1} text="Hi first"/>
@@ -64,7 +71,7 @@ function Content() {
      </ScrollArea>
      {/* <Repeat n={30} text="Hi first"/>
      <Repeat n={30} text="Hi second"/> */}
-    </Stack>
+    </Flex>
  );
 }
 
@@ -83,9 +90,10 @@ const Popup = () => {
 
   return (
     <Box h="100%">
-      <Box h="5%" bg="red">
+      <Box h={HEADER_HEIGHT_PCT} bg="red">
         <Text fz="xl" align="center">Prerequisites Checker</Text>
       </Box>
+
       <Test/>
     </Box>
      
