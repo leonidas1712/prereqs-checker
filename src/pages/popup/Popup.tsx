@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import logo from "@assets/img/logo.svg";
 import "@pages/popup/Popup.css";
-import { Container, Text, Accordion, Center, Box, ScrollArea, Flex, Space, Collapse, Button, Group, ActionIcon, Tooltip } from "@mantine/core";
+import { Container, Text, Accordion, Center, Box, ScrollArea, Flex, 
+  Space, Collapse, Button, Group, ActionIcon, Tooltip, Transition } from "@mantine/core";
 import { useDisclosure } from '@mantine/hooks';
 import { replicate } from "fp-ts/lib/Array";
 
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
-import { createContext, useContext } from "react";
 
 const CONTENT_HEIGHT_PCT_INT=93;
 const CONTENT_HEIGHT_PCT=`${CONTENT_HEIGHT_PCT_INT}%`;
@@ -59,9 +59,15 @@ function Content(props:ShowModsProps) {
       </ScrollContent>
 
       {/* Modules */}
-      { showMods ? <ScrollContent style={bottomStyle}>
+      {/* { showMods ? <ScrollContent style={bottomStyle}>
+          <Repeat n={30} text="Hi second"/>
+      </ScrollContent> : <></>} */}
+
+      <Transition mounted={showMods} transition="slide-up" duration={100} timingFunction="ease-in-out">
+      {(styles) => showMods ? <ScrollContent style={{...styles, ...bottomStyle}}>
           <Repeat n={30} text="Hi second"/>
       </ScrollContent> : <></>}
+    </Transition>
     </Flex>
   );
 }
