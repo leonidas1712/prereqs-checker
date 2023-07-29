@@ -21,6 +21,7 @@
     "@mantine/core": "^6.0.17",
     "@mantine/hooks": "^6.0.17",
     "@mantine/notifications": "^6.0.17",
+    "fp-ts": "^2.16.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
@@ -51,7 +52,6 @@
     "prettier": "2.8.8",
     "rollup": "2.79.1",
     "sass": "1.62.1",
-    "tabler-icons-react": "^1.56.0",
     "tailwindcss": "^3.3.2",
     "ts-jest": "29.0.2",
     "ts-loader": "9.4.2",
