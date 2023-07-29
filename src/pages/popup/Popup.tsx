@@ -29,16 +29,19 @@ function ScrollContent(props:React.PropsWithChildren<ScrollProps>) {
 }
 
 function Content(props:ShowModsProps) {
-  const topStyle:React.CSSProperties = {
+  const prereqStyle:React.CSSProperties = {
     flex: '1',
+    backgroundColor:"#222324",
+    color:"#ff5138"
+
     // backgroundColor:"cyan"
     // height: "20%",
   };
 
-  const bottomStyle:React.CSSProperties = {
+  const modsStyle:React.CSSProperties = {
     flex: '1.2',
+    backgroundColor:"#aaa"
     // maxHeight:"50%",
-    backgroundColor:"green"
     // height: "80%",
   };
 
@@ -54,19 +57,18 @@ function Content(props:ShowModsProps) {
   return (
     // Prerequisite errors
     <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
-      <ScrollContent style={topStyle}>
+      <ScrollContent style={prereqStyle}>
         <Repeat n={15} text="Hi first"/>
       </ScrollContent>
 
-      {/* Modules */}
-      {/* { showMods ? <ScrollContent style={bottomStyle}>
-          <Repeat n={30} text="Hi second"/>
-      </ScrollContent> : <></>} */}
-
       <Transition mounted={showMods} transition="slide-up" duration={100} timingFunction="ease-in-out">
-      {(styles) => showMods ? <ScrollContent style={{...styles, ...bottomStyle}}>
+
+      {/* Modules */}
+      {(styles) => showMods ? 
+      <ScrollContent style={{...styles, ...modsStyle}}>
           <Repeat n={30} text="Hi second"/>
       </ScrollContent> : <></>}
+
     </Transition>
     </Flex>
   );
@@ -101,15 +103,15 @@ function ToggleModsBtn(props:ShowModsProps) {
 
   return (
     <Tooltip label={label} color="teal">
-      <ActionIcon component="button" onClick={click} color="dark">{icon}</ActionIcon>
+      <ActionIcon component="button" onClick={click} color="yellow">{icon}</ActionIcon>
     </Tooltip>
   )
 }
 
 function Header(props:ShowModsProps) {
   return (
-    <Flex h={HEADER_HEIGHT_PCT} bg="indigo" justify={"center"} align={"center"}>
-      <Text fz="lg" align="center">Prerequisites Checker</Text>
+    <Flex h={HEADER_HEIGHT_PCT} bg="#292929" justify={"center"} align={"center"}>
+      <Text fz="lg" align="center" color="#ff5138">Prerequisites Checker</Text>
       <ToggleModsBtn showMods={props.showMods} setShowMods={props.setShowMods} />
     </Flex>
   );
@@ -119,7 +121,7 @@ function Header(props:ShowModsProps) {
 const Popup = () => {
   const [showMods, setShowMods] = useState(false);
   return (
-      <Box h="100%">  
+      <Box h="100%" bg="#aaa">  
         <Header showMods={showMods} setShowMods={setShowMods}/>
         <Content showMods={showMods} setShowMods={setShowMods}/>
       </Box>
