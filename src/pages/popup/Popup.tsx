@@ -17,86 +17,59 @@ const Mods = () => {
  </Accordion>
 };
 
-{/* <Box bg="red" style={{flex: 1}}>
-        <Text fz="xl">hi</Text>
-      </Box> */}
 
 const CONTENT_HEIGHT_PCT_INT=95;
 const CONTENT_HEIGHT_PCT=`${CONTENT_HEIGHT_PCT_INT}%`;
 const HEADER_HEIGHT_PCT=`${100-CONTENT_HEIGHT_PCT_INT}%`
 
+function Test2() {
+  const topStyle = {
+    flex: '1',
+    overflow: 'auto',
+    // height: "20%",
+  };
 
+  const bottomStyle = {
+    flex: '1.3',
+    overflow: 'auto',
+    // height: "80%",
+  };
 
-function Test() {
   return (
     <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
-      <Box bg="blue" style={{flex: 1}}><Text fz="xl">hi2</Text></Box>
-      <Box bg="cyan" style={{flex: 1.3}}><Text fz="xl">hi3</Text></Box>
+      <ScrollArea style={topStyle} type="auto" bg="blue">
+       <Repeat n={20} text="Hi first"/>
+     </ScrollArea>
+
+     <ScrollArea style={bottomStyle} type="auto" bg="cyan">
+       <Repeat n={100} text="Hi second"/>
+     </ScrollArea>
     </Flex>
   );
 }
 
 function Repeat({ n, text }: { n:number, text:string })  {
+  const mapper = (txt: string, idx: number) => {
+    return <Text fz="xl">{`${idx+1}. ${txt}`}</Text>
+  };
+
   return (
     <>
-      { replicate(n, <Text fz="xl">{text}</Text>) }
+      {/* { replicate(n, <Text fz="xl">{text}</Text>) } */}
+      { replicate(n, text).map(mapper) }
     </>
   )
 }
 
-function Content() {
-  const topStyle = {
-    flex: '1',
-    overflow: 'auto',
-    // height: "20%",
-  };
-
-  const bottomStyle = {
-    flex: '1.618',
-    overflow: 'auto',
-    // height: "80%",
-  };
-
-  return (
-    <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{
-     alignContent:"center",
-     height:"100%"
-   }}>
-     <ScrollArea style={topStyle} type="auto" bg="white">
-       <Repeat n={1} text="Hi first"/>
-     </ScrollArea>
-     <Divider/>
-     <ScrollArea style={bottomStyle} bg="white">
-       <Repeat n={1} text="Hi second"/>
-     </ScrollArea>
-     {/* <Repeat n={30} text="Hi first"/>
-     <Repeat n={30} text="Hi second"/> */}
-    </Flex>
- );
-}
-
 const Popup = () => {
-  const topStyle = {
-    flex: '1',
-    overflow: 'auto',
-    // height: "20%",
-  };
-
-  const bottomStyle = {
-    flex: '1.618',
-    overflow: 'auto',
-    // height: "80%",
-  };
-
   return (
     <Box h="100%">
       <Box h={HEADER_HEIGHT_PCT} bg="red">
         <Text fz="xl" align="center">Prerequisites Checker</Text>
       </Box>
 
-      <Test/>
+      <Test2/>
     </Box>
-     
   );
 };
 
