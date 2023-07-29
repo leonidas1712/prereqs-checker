@@ -1,21 +1,22 @@
 import React from "react";
 import logo from "@assets/img/logo.svg";
 import "@pages/popup/Popup.css";
-import { Container, Text, Accordion, Center, Box, ScrollArea, Flex, Stack, Divider, Space} from "@mantine/core";
+import { Container, Text, Accordion, Center, Box, ScrollArea, Flex, Space, Collapse, Button, Group } from "@mantine/core";
+import { useDisclosure } from '@mantine/hooks';
 import { replicate } from "fp-ts/lib/Array";
 
-const Mods = () => {
-  return <Accordion variant="separated" radius="sm" defaultValue="mods"
-  styles={{
-    item: {
-      width:"100%"
-    }}}>
-  <Accordion.Item value="mods">
-    <Accordion.Control>Add modules</Accordion.Control>
-    <Accordion.Panel>Panel content</Accordion.Panel>
-  </Accordion.Item>
- </Accordion>
-};
+// const Mods = () => {
+//   return <Accordion variant="separated" radius="sm" defaultValue="mods"
+//   styles={{
+//     item: {
+//       width:"100%"
+//     }}}>
+//   <Accordion.Item value="mods">
+//     <Accordion.Control>Add modules</Accordion.Control>
+//     <Accordion.Panel>Panel content</Accordion.Panel>
+//   </Accordion.Item>
+//  </Accordion>
+// };
 
 
 const CONTENT_HEIGHT_PCT_INT=95;
@@ -32,7 +33,7 @@ function ScrollContent(props:React.PropsWithChildren<ScrollProps>) {
     padding:"0.4rem",
   };
   return (
-    <ScrollArea style={{...props.style, ...commonStyle}} type="auto" bg="blue">
+    <ScrollArea style={{...props.style, ...commonStyle}} type="auto">
       { props.children }
     </ScrollArea>
   )
@@ -41,7 +42,7 @@ function ScrollContent(props:React.PropsWithChildren<ScrollProps>) {
 function Test3() {
   const topStyle:React.CSSProperties = {
     flex: '1',
-    backgroundColor:"cyan"
+    // backgroundColor:"cyan"
     // height: "20%",
   };
 
@@ -51,12 +52,17 @@ function Test3() {
     // height: "80%",
   };
 
+  // const [opened, { toggle }] = useDisclosure(false);
+
   return (
     <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
       <ScrollContent style={topStyle}>
-       <Repeat n={2} text="Hi first"/>
+
+      <Button color="pink"><Text color="orange">Toggle</Text></Button>
+      
+
+       {/* <Repeat n={2} text="Hi first"/> */}
       </ScrollContent>
-      <Space/>
 
      <ScrollContent style={bottomStyle}>
        <Repeat n={1} text="Hi second"/>
