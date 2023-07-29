@@ -8,21 +8,6 @@ import { replicate } from "fp-ts/lib/Array";
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import { createContext, useContext } from "react";
 
-
-// const Mods = () => {
-//   return <Accordion variant="separated" radius="sm" defaultValue="mods"
-//   styles={{
-//     item: {
-//       width:"100%"
-//     }}}>
-//   <Accordion.Item value="mods">
-//     <Accordion.Control>Add modules</Accordion.Control>
-//     <Accordion.Panel>Panel content</Accordion.Panel>
-//   </Accordion.Item>
-//  </Accordion>
-// };
-
-
 const CONTENT_HEIGHT_PCT_INT=93;
 const CONTENT_HEIGHT_PCT=`${CONTENT_HEIGHT_PCT_INT}%`;
 const HEADER_HEIGHT_PCT=`${100-CONTENT_HEIGHT_PCT_INT}%`
@@ -67,17 +52,9 @@ function Content(props:ShowModsProps) {
   };
 
   return (
+    // Prerequisite errors
     <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
       <ScrollContent style={topStyle}>
-        <Group position="center" mb={5}>
-          {/* <Button leftIcon={<FaEye />} onClick={() => setShowMods(!showMods)} color="pink"><Text>Toggle modules</Text></Button> */}
-
-          {/* <Tooltip label="Tooltip" color="teal">
-            <ActionIcon component="button" onClick={() => setShowMods(!showMods)} color="dark"><FaEye size="1.4rem"/></ActionIcon>
-          </Tooltip> */}
-
-        </Group>
-
         <Repeat n={15} text="Hi first"/>
       </ScrollContent>
 
@@ -85,46 +62,6 @@ function Content(props:ShowModsProps) {
       { showMods ? <ScrollContent style={bottomStyle}>
           <Repeat n={30} text="Hi second"/>
       </ScrollContent> : <></>}
-    </Flex>
-  );
-}
-
-function TestAll() {
-  const topStyle:React.CSSProperties = {
-    flex: '1',
-    // backgroundColor:"cyan"
-    // height: "20%",
-  };
-
-  const bottomStyle:React.CSSProperties = {
-    flex: '1.2',
-    // maxHeight:"50%",
-    backgroundColor:"green"
-    // height: "80%",
-  };
-
-  const [opened, { toggle }] = useDisclosure(false);
-
-  return (
-    <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
-      <ScrollContent style={topStyle}>
-
-        <Repeat n={5} text="Hi first"/>
-
-
-        <Group position="center" mb={5}>
-          <Button onClick={toggle} color="pink"><Text>Toggle modules</Text></Button>
-        </Group>
-
-        <Collapse in={opened}>
-          <Repeat n={30} text="Hi second"/>
-        </Collapse>
-      </ScrollContent>
-
-      {/* <ScrollContent style={bottomStyle}>
-        
-      </ScrollContent> */}
-     
     </Flex>
   );
 }
@@ -175,9 +112,6 @@ function Header(props:ShowModsProps) {
 
 const Popup = () => {
   const [showMods, setShowMods] = useState(false);
-  // const modsValue = { showMods, setShowMods };
-  // const ShowModsContext = createContext<ShowModsProps>(modsValue);
-
   return (
       <Box h="100%">  
         <Header showMods={showMods} setShowMods={setShowMods}/>
