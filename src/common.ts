@@ -5,4 +5,8 @@ export const NUSMODS_HOSTNAME = "nusmods.com";
 export const GET_MODULE="GET_MODULE";
 
 // type for content script response when GET_MODULE
+
+// example return for nusmods.com:
+    // 'CS1010S Programming Methodology - NUSMods'
+    // 'Timetable - NUSMods'
 export type ContentScriptGetModuleResponse = string;

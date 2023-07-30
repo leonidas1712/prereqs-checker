@@ -15,6 +15,13 @@ type Module = {
     name:string
 };
 
+// Return Module from content script response on nusmods.com
+// 'CS1010S Programming Methodology - NUSMods'
+// 'Timetable - NUSMods'
+function getModuleFromContentResponse(response:ContentScriptGetModuleResponse):Opt.Option<Module> {
+    return Opt.none;
+}   
+
 // Request content script for document title if hostname is nusmods.com
 // Return module code, module title parsed from document title
 export async function requestContentScript():Promise<Module> {
@@ -24,8 +31,7 @@ export async function requestContentScript():Promise<Module> {
   
       try {
         const [tab] = await chrome.tabs.query(queryOptions);
-        console.log("Got tab:")
-        console.log(tab);
+        console.log("Got tab:", tab)
 
         if (!tab) {
             return Promise.reject("Tab was undefined");
