@@ -6,6 +6,8 @@ import { Container, Text, Accordion, Center, Box, ScrollArea, Flex,
 import { useDisclosure } from '@mantine/hooks';
 import { replicate } from "fp-ts/lib/Array";
 
+import { Header } from "./Header";
+
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 
 const CONTENT_HEIGHT_PCT_INT=93;
@@ -45,14 +47,7 @@ function Content(props:ShowModsProps) {
     // height: "80%",
   };
 
-  const [opened, { toggle }] = useDisclosure(false);
-  // const [showMods, setShowMods] = useState(true);
   const { showMods, setShowMods } = props;
-
-  const clickToggle = () => {
-    toggle();
-    setShowMods(!showMods);
-  };
 
   return (
     // Prerequisite errors
@@ -108,14 +103,14 @@ function ToggleModsBtn(props:ShowModsProps) {
   )
 }
 
-function Header(props:ShowModsProps) {
-  return (
-    <Flex h={HEADER_HEIGHT_PCT} bg="#292929" justify={"center"} align={"center"}>
-      <Text fz="lg" align="center" color="#ff5138">Prerequisites Checker</Text>
-      <ToggleModsBtn showMods={props.showMods} setShowMods={props.setShowMods} />
-    </Flex>
-  );
-}
+// function Header(props:ShowModsProps) {
+//   return (
+//     <Flex h={HEADER_HEIGHT_PCT} bg="#292929" justify={"center"} align={"center"}>
+//       <Text fz="lg" align="center" color="#ff5138">Prerequisites Checker</Text>
+//       <ToggleModsBtn showMods={props.showMods} setShowMods={props.setShowMods} />
+//     </Flex>
+//   );
+// }
 
 
 const Popup = () => {
