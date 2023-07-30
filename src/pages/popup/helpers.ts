@@ -1,6 +1,6 @@
 // Helper functions
 import * as Opt from "fp-ts/lib/Option";
-import { NUSMODS_HOSTNAME } from "./common";
+import { NUSMODS_HOSTNAME } from "../../common"
 import { ContentScriptModuleResponse, GET_MODULE } from "@src/common";
 
 // Check if tab.url corresponds to NUSMods

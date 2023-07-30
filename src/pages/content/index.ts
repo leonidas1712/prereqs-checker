@@ -7,7 +7,9 @@ console.log("Detected NUSMods course page changed");
  * Content script to run on nusmods.com
  */
 
-
+// Send response with Module
+  // module: module code, title
+  // e.g CS2040S, Data Structures and Algorithms
 const messagesFromReactAppListener = (
   msg,
   sender: chrome.runtime.MessageSender,

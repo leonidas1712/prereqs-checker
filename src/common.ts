@@ -1,4 +1,5 @@
 // Common across components
+export const NUSMODS_HOSTNAME = "nusmods.com";
 
 // Request for module from content script
 export const GET_MODULE="GET_MODULE";
