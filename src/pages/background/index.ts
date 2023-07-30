@@ -20,6 +20,10 @@ get_mods().then((res) => {
     });
 })
 
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+    console.log("Change info from background script", changeInfo);
+  });
+
 // chrome.runtime.onStartup.addListener(() => {
 //     console.log("On startup listener in background");
 
