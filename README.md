@@ -1,4 +1,4 @@
-# <center> PrereqsChecker </center>
+# <p align="center"> PrereqsChecker </p>
 A Google Chrome extension to help you check if the module you are viewing on nusmods.com
 can be taken.
 
