@@ -2,6 +2,7 @@
 import * as Opt from "fp-ts/lib/Option";
 import { NUSMODS_HOSTNAME } from "../../common"
 import { ContentScriptGetModuleResponse, GET_MODULE } from "@src/common";
+import { pipe } from "fp-ts/lib/function";
 
 // Check if tab.url corresponds to NUSMods
 function isNusMods(url_str:string):boolean {
@@ -12,14 +13,30 @@ function isNusMods(url_str:string):boolean {
 
 // Should return Option<Module> of module code and title
 type Module = {
-    name:string
+    moduleCode:string,
+    title:string
 };
 
 // Return Module from content script response on nusmods.com
 // 'CS1010S Programming Methodology - NUSMods'
 // 'Timetable - NUSMods'
 function getModuleFromContentResponse(response:ContentScriptGetModuleResponse):Opt.Option<Module> {
-    return Opt.none;
+    if (response.length == 0) {
+        return Opt.none;
+    }
+
+    const first_split = response.split('-')[0].trim().split(' ');  // CS1010S,Programming,Methodology 
+
+    // TODO: filter mod code by regex
+    const mod_code = first_split[0]; // CS1010S
+    const title = first_split.slice(1).join(' '); // Programming Methodology
+
+    const mod:Module = {
+        moduleCode:mod_code,
+        title
+    }
+
+    return Opt.some(mod)
 }   
 
 // Request content script for document title if hostname is nusmods.com
@@ -48,9 +65,18 @@ export async function requestContentScript():Promise<Module> {
 
         // sendMessage to query content script for document.title
         const res:ContentScriptGetModuleResponse = await chrome.tabs.sendMessage(tab.id, GET_MODULE);
-        return Promise.resolve({
-            name:res
-        });
+        
+        // if option is none: return Promise.reject(not a module page)
+        // else: return Promise.resolve(module)
+
+        // return Promise.resolve(getModuleFromContentResponse(res));
+        return pipe(
+            getModuleFromContentResponse(res),
+            Opt.match(
+                () => Promise.reject(`'${res}' is not a module page`),
+                (mod:Module) => Promise.resolve(mod)
+            )
+        );
 
     } catch(error) {
       console.log("Error requesting content script");
