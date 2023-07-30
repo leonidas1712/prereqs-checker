@@ -5,6 +5,18 @@ export const CONTENT_HEIGHT_PCT_INT=93;
 export const CONTENT_HEIGHT_PCT=`${CONTENT_HEIGHT_PCT_INT}%`;
 export const HEADER_HEIGHT_PCT=`${100-CONTENT_HEIGHT_PCT_INT}%`
 
+// Exact match on mod code with ^...$
+    // First part can have 2-4 chars e.g GESS1000
+    // Second part has exactly 4 numbers e.g GESS1000
+    // Possible to have 0 chars for last part e.g AR5803
+    // Last part has 0-5 chars but just do .* in case a mod with 6+ chars at the end exists later
+        // 5 chars at the end: LC6009GRSII (Graduate Seminar)
+const MOD_CODE_REGEX = /^[A-Z]{2,4}\d{4}.*$/;
+
+export function is_valid_mod_code(mod_code:string):boolean {
+    return mod_code.match(MOD_CODE_REGEX) != null;
+}
+
 export type ShowModsProps = {
     showMods: boolean, 
     setShowMods: React.Dispatch<React.SetStateAction<boolean>>

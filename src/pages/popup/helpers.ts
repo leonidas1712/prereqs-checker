@@ -3,6 +3,7 @@ import * as Opt from "fp-ts/lib/Option";
 import { NUSMODS_HOSTNAME } from "../../common"
 import { ContentScriptGetModuleResponse, GET_MODULE } from "@src/common";
 import { pipe } from "fp-ts/lib/function";
+import { is_valid_mod_code } from "./common";
 
 // Check if tab.url corresponds to NUSMods
 function isNusMods(url_str:string):boolean {
@@ -29,6 +30,11 @@ function getModuleFromContentResponse(response:ContentScriptGetModuleResponse):O
 
     // TODO: filter mod code by regex
     const mod_code = first_split[0]; // CS1010S
+
+    if (!is_valid_mod_code(mod_code)) {
+        return Opt.none;
+    }
+
     const title = first_split.slice(1).join(' '); // Programming Methodology
 
     const mod:Module = {
