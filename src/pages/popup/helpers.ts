@@ -1,7 +1,7 @@
 // Helper functions
 import * as Opt from "fp-ts/lib/Option";
 import { NUSMODS_HOSTNAME } from "../../common"
-import { ContentScriptModuleResponse, GET_MODULE } from "@src/common";
+import { ContentScriptGetModuleResponse, GET_MODULE } from "@src/common";
 
 // Check if tab.url corresponds to NUSMods
 function isNusMods(url_str:string):boolean {
@@ -15,6 +15,8 @@ type Module = {
     name:string
 };
 
+// Request content script for document title if hostname is nusmods.com
+// Return module code, module title parsed from document title
 export async function requestContentScript():Promise<Module> {
     console.log("Requesting tab changed!");
     // Get activeTab
@@ -29,9 +31,9 @@ export async function requestContentScript():Promise<Module> {
             return Promise.reject("Tab was undefined");
         }
   
-        // Check for nusmods.com
         console.log("Tab url:", tab.url);
-    
+        
+        // Check for nusmods.com
         if(!isNusMods(tab.url)) {
             return Promise.reject("Hostname is not NUSMods");
         }
@@ -39,13 +41,13 @@ export async function requestContentScript():Promise<Module> {
         console.log("Sending message to content script");
 
         // sendMessage to query content script for document.title
-        const res:ContentScriptModuleResponse = await chrome.tabs.sendMessage(tab.id, GET_MODULE);
+        const res:ContentScriptGetModuleResponse = await chrome.tabs.sendMessage(tab.id, GET_MODULE);
         return Promise.resolve({
             name:res
         });
 
     } catch(error) {
-      console.log("Error requesting content script from index.tsx:");
+      console.log("Error requesting content script");
       return Promise.reject(error);
     }
   }

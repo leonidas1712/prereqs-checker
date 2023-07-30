@@ -5,4 +5,4 @@ export const NUSMODS_HOSTNAME = "nusmods.com";
 export const GET_MODULE="GET_MODULE";
 
 // type for content script response when GET_MODULE
-export type ContentScriptModuleResponse = string;
+export type ContentScriptGetModuleResponse = string;

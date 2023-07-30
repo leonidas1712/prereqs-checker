@@ -1,4 +1,4 @@
-import { ContentScriptModuleResponse } from "@src/common";
+import { ContentScriptGetModuleResponse } from "@src/common";
 
 console.log("Detected NUSMods course page changed");
 
@@ -17,8 +17,8 @@ const messagesFromReactAppListener = (
  
   console.log('[content.js]. Message received', msg);
 
-   // Prepare the response object with information about the site
-  const response:ContentScriptModuleResponse = document.title;
+   // Respond with document.title - this contains module information
+  const response:ContentScriptGetModuleResponse = document.title;
 
   sendResponse(response);
 }
