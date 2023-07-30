@@ -2,6 +2,10 @@ import reloadOnUpdate from "virtual:reload-on-update-in-background-script";
 
 reloadOnUpdate("pages/background");
 
+function hi():Promise<number> {
+    return Promise.resolve(2450);
+}
+
 /**
  * Extension reloading is necessary because the browser automatically caches the css.
  * If you do not use the css of the content script, please delete it.
@@ -9,3 +13,22 @@ reloadOnUpdate("pages/background");
 reloadOnUpdate("pages/content/style.scss");
 
 console.log("background loaded");
+
+// chrome.runtime.onStartup.addListener(() => {
+//     console.log("On startup listener in background");
+
+
+//     chrome.storage.local.set({ key: "react" }).then(() => {
+//         console.log("Set value of key to react");
+
+//     });
+// });
+
+
+  
+// chrome.storage.local.get(["key"]).then((result) => {
+//     console.log("Value currently is " + result.key);
+// }).catch((err) => console.log("Err getting val:", err));
+
+// console.log("ran after");
+

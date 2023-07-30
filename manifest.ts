@@ -21,7 +21,8 @@ const manifest: chrome.runtime.ManifestV3 = {
     "128": "icon-128.png",
   },
   permissions: [
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
   content_scripts: [
     {
