@@ -20,6 +20,9 @@ const manifest: chrome.runtime.ManifestV3 = {
   icons: {
     "128": "icon-128.png",
   },
+  permissions: [
+    "activeTab"
+  ],
   content_scripts: [
     {
       matches: ["http://nusmods.com/*", "https://nusmods.com/*"],

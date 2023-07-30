@@ -61,7 +61,7 @@ function Content(props:ShowModsProps) {
         <Repeat n={15} text="Hi!"/>
       </ScrollContent>
 
-      <Transition mounted={showMods} transition="slide-up" duration={100} timingFunction="ease-in-out">
+      <Transition mounted={showMods} transition="slide-up" duration={200} timingFunction="ease-out">
 
       {/* Modules */}
       {(styles) => showMods ? 
