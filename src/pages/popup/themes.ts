@@ -18,7 +18,7 @@ declare module '@mantine/core' {
 
 const common = {
     fontFamily: "-apple-system, BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
-    priOrange:'#ff5138 ', // NUSMods orange
+    priOrange:'#ff5138 ', //  Orange
     successGreen: '#28a745', // Notifs
     modCardBg:'#2BB34A', // From Planner
     modCardFontColor:'#0A2C12', // Planner

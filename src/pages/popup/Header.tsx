@@ -1,4 +1,4 @@
-import { Text, Flex, Tooltip, ActionIcon } from "@mantine/core";
+import { Text, Flex, Tooltip, ActionIcon, useMantineTheme } from "@mantine/core";
 import { ShowModsProps, HEADER_HEIGHT_PCT } from "./common";
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 
@@ -20,9 +20,10 @@ function ToggleModsBtn(props:ShowModsProps) {
   }
 
 export function Header(props:ShowModsProps) {
+    const theme = useMantineTheme();
     return (
-      <Flex h={HEADER_HEIGHT_PCT} bg="#292929" justify={"center"} align={"center"}>
-        <Text fz="lg" align="center" color="#ff5138">PrereqsChecker</Text>
+      <Flex h={HEADER_HEIGHT_PCT}  bg={theme.other.bgColorLight} justify={"center"} align={"center"}>
+        <Text fz="xl" align="center" color="white" fw={theme.other.titleFontWeight}>PrereqsChecker</Text>
         <ToggleModsBtn showMods={props.showMods} setShowMods={props.setShowMods} />
       </Flex>
     );
