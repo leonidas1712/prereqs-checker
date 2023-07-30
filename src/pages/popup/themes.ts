@@ -1,4 +1,23 @@
+import { MantineThemeOverride } from "@mantine/core";
+
+declare module '@mantine/core' {
+    export interface MantineThemeOther {
+        secondaryFontColor: string;
+        bgColor: string;
+        bgColorLight: string;
+        fadedFontColor: string;
+        priOrange: string;
+        successGreen: string;
+        modCardBg: string;
+        modCardFontColor: string;
+        warnCardBg: string;
+        warnCardFontColor: string;
+        titleFontWeight: number;
+    }
+  }
+
 const common = {
+    fontFamily: "-apple-system, BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
     priOrange:'#ff5138 ', // NUSMods orange
     successGreen: '#28a745', // Notifs
     modCardBg:'#2BB34A', // From Planner
@@ -8,13 +27,26 @@ const common = {
     titleFontWeight:700
 };
 
-const darkThemeOverride = {
+export const DarkThemeOverride:MantineThemeOverride = {
     other: {
         ...common,
-        secondaryFontColor:'#aaa',
-        bgColor:'#222324',
-        bgColorLight:'#292929',
-
-
+        secondaryFontColor:'#aaa', // paragraph font color
+        bgColor:'#222324', // background color
+        bgColorLight:'#292929', // for header
+        fadedFontColor:'#aeb1b5' // faded font color
     }
 };
+
+
+
+// secondaryFontColor: string;
+// bgColor: string;
+// bgColorLight: string;
+// fadedFontColor: string;
+// priOrange: string;
+// successGreen: string;
+// modCardBg: string;
+// modCardFontColor: string;
+// warnCardBg: string;
+// warnCardFontColor: string;
+// titleFontWeight: number;

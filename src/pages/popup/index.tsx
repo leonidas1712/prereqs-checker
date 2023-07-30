@@ -5,6 +5,7 @@ import Popup from "@pages/popup/Popup";
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
 import { MantineProvider } from "@mantine/core";
 import { requestModuleFromContentScript } from "./helpers";
+import { DarkThemeOverride } from "./themes";
 
 refreshOnUpdate("pages/popup");
 
@@ -17,10 +18,7 @@ function Root() {
       .catch((err) => console.log("Error while requesting:", err))
   });
   return (
-    <MantineProvider theme={{
-      // Font from NUSMods
-      fontFamily: "-apple-system, BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
-    }}>
+    <MantineProvider theme={DarkThemeOverride}>
       <Popup />
     </MantineProvider>
   )
