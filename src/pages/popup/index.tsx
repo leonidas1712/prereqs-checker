@@ -11,7 +11,9 @@ refreshOnUpdate("pages/popup");
 // set module here: pass down Option<Module> to popup
 function Root() {
   useEffect(() => {
-    requestContentScript();
+    requestContentScript()
+      .then((res) => console.log("Res from content script:", res))
+      .catch((err) => console.log("Error while requesting:", err))
   });
   return (
     <MantineProvider theme={{

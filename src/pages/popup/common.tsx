@@ -1,6 +1,7 @@
 import { Text, ScrollArea } from "@mantine/core";
 import { replicate } from "fp-ts/lib/Array";
 
+export const NUSMODS_HOSTNAME = "nusmods.com";
 export const CONTENT_HEIGHT_PCT_INT=93;
 export const CONTENT_HEIGHT_PCT=`${CONTENT_HEIGHT_PCT_INT}%`;
 export const HEADER_HEIGHT_PCT=`${100-CONTENT_HEIGHT_PCT_INT}%`
@@ -9,6 +10,7 @@ export type ShowModsProps = {
     showMods: boolean, 
     setShowMods: React.Dispatch<React.SetStateAction<boolean>>
 }
+
 
 export function Repeat({ n, text }: { n:number, text:string })  {
     const mapper = (txt: string, idx: number) => {
