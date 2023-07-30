@@ -13,7 +13,7 @@ function isNusMods(url_str:string):boolean {
 }
 
 // Should return Option<Module> of module code and title
-type Module = {
+export type Module = {
     moduleCode:string,
     title:string
 };
