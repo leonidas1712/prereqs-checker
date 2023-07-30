@@ -13,6 +13,7 @@ declare module '@mantine/core' {
         warnCardBg: string;
         warnCardFontColor: string;
         titleFontWeight: number;
+        headerFontColor:string
     }
   }
 
@@ -33,7 +34,8 @@ export const DarkThemeOverride:MantineThemeOverride = {
         secondaryFontColor:'#aaa', // paragraph font color
         bgColor:'#222324', // background color
         bgColorLight:'#292929', // for header
-        fadedFontColor:'#aeb1b5' // faded font color
+        fadedFontColor:'#aeb1b5', // faded font color,
+        headerFontColor:"white"
     }
 };
 

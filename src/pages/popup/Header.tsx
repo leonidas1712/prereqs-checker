@@ -27,7 +27,7 @@ export function Header(props:ShowModsProps) {
     const theme = useMantineTheme();
     return (
       <Flex h={HEADER_HEIGHT_PCT}  bg={theme.other.bgColorLight} justify={"center"} align={"center"}>
-        <Text fz="xl" align="center" color="white" fw={theme.other.titleFontWeight}>PrereqsChecker</Text>
+        <Text fz="xl" align="center" color={theme.other.headerFontColor} fw={theme.other.titleFontWeight}>PrereqsChecker</Text>
         <ToggleModsBtn showMods={props.showMods} setShowMods={props.setShowMods} />
       </Flex>
     );
