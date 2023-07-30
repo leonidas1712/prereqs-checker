@@ -8,6 +8,7 @@ import { requestModuleFromContentScript } from "./helpers";
 
 refreshOnUpdate("pages/popup");
 
+
 // set module here: pass down Option<Module> to popup
 function Root() {
   useEffect(() => {

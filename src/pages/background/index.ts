@@ -12,8 +12,11 @@ function hi():Promise<number> {
  */
 reloadOnUpdate("pages/content/style.scss");
 
-console.log("background loaded");
+console.log("background loaded: date is", Date());
 
+chrome.storage.local.set({ key: "react" }).then(() => {
+    console.log("Value is set");
+});
 // chrome.runtime.onStartup.addListener(() => {
 //     console.log("On startup listener in background");
 
