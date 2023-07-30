@@ -10,3 +10,11 @@ export const GET_MODULE="GET_MODULE";
     // 'CS1010S Programming Methodology - NUSMods'
     // 'Timetable - NUSMods'
 export type ContentScriptGetModuleResponse = string;
+
+export type ModuleCode = string; // E.g. "CS3216"
+export type ModuleTitle = string;
+
+export type ModuleCondensed = Readonly<{
+    moduleCode: ModuleCode;
+    title: ModuleTitle;
+}>;

@@ -1,5 +1,5 @@
 import reloadOnUpdate from "virtual:reload-on-update-in-background-script";
-
+import { get_mods } from "./helpers";
 reloadOnUpdate("pages/background");
 
 function hi():Promise<number> {
@@ -14,9 +14,12 @@ reloadOnUpdate("pages/content/style.scss");
 
 console.log("background loaded: date is", Date());
 
-chrome.storage.local.set({ key: "react" }).then(() => {
-    console.log("Value is set");
-});
+get_mods().then((res) => {
+    chrome.storage.local.set({ key: res }).then(() => {
+        console.log("Value is set to (first 5):", res.slice(0,5));
+    });
+})
+
 // chrome.runtime.onStartup.addListener(() => {
 //     console.log("On startup listener in background");
 
