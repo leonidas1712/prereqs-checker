@@ -16,7 +16,7 @@ console.log("background loaded: date is", Date());
 
 get_mods().then((res) => {
     chrome.storage.local.set({ key: res }).then(() => {
-        console.log("Value is set to (first 5):", res.slice(0,5));
+        console.log("Value is set to (first 5):", res);
     });
 })
 

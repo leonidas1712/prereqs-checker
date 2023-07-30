@@ -4,15 +4,13 @@ import { Box } from "@mantine/core";
 
 import { Header } from "./Header";
 import { Content } from "./Content";
-import { ModuleCondensed } from "@src/common";
+import { ModuleCondensed, ModulesRecord } from "@src/common";
 
 const Popup = () => {
   useEffect(() => {
-    chrome.storage.local.get(["key"]).then((result:{ key: ModuleCondensed[]}) => {
-      console.log("Value from popup is: " + result.key.slice(0,5));
-      const y = result.key.slice(0,5).map((r) => r.moduleCode);
-      console.log("y:", y);
-      console.log("Total len:", result.key.length);
+    chrome.storage.local.get(["key"]).then((result:{ key: ModulesRecord}) => {
+      console.log("Value from popup is: " + result.key['CS3233']);
+      console.log("Num of keys:", Object.keys(result.key).length);
     });
   });
   const [showMods, setShowMods] = useState(false);

@@ -18,3 +18,5 @@ export type ModuleCondensed = Readonly<{
     moduleCode: ModuleCode;
     title: ModuleTitle;
 }>;
+
+export type ModulesRecord = Record<ModuleCode, ModuleTitle>;
