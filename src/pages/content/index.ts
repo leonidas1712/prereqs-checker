@@ -2,7 +2,7 @@ console.log("Detected NUSMods course page changed");
 
 /**
  * @description
- * Chrome extensions don't support modules in content scripts.
+ * Content script to run on nusmods.com
  */
 
 

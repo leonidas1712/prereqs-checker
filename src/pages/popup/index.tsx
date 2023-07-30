@@ -8,17 +8,25 @@ import { MantineProvider } from "@mantine/core";
 refreshOnUpdate("pages/popup");
 
 async function requestContentScript() {
-  console.log("Requesting tab");
+  console.log("Requesting tab changed!");
   const queryOptions = { active: true, lastFocusedWindow:true };
-  const [tab] = await chrome.tabs.query(queryOptions);
-  console.log("Got tab:")
-  console.log(tab);
 
-  if (tab) {
-    chrome.tabs.sendMessage(tab.id, { type: 'hi from popup' }, (response) => {
-      console.log("Got response from content script:");
-      console.log(response);
-    });
+    try {
+      const [tab] = await chrome.tabs.query(queryOptions);
+      console.log("Got tab:")
+      console.log(tab);
+      
+
+      if (tab) {
+        console.log("Tab url:", tab.url);
+        chrome.tabs.sendMessage(tab.id, { type: 'hi from popup' }, (response) => {
+          console.log("Got response from content script:");
+          console.log(response);
+        });
+      }
+  } catch(error) {
+    console.log("Error requesting content script from index.tsx:");
+    console.log(error);
   }
 }
 

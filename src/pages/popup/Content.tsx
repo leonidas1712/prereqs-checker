@@ -20,7 +20,7 @@ export function Content(props:ShowModsProps) {
       // Prerequisite errors
       <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
         <ScrollContent style={prereqStyle}>
-          <Repeat n={15} text="Hi!"/>
+          <Repeat n={15} text="Hi changes!"/>
         </ScrollContent>
   
         <Transition mounted={showMods} transition="slide-up" duration={200} timingFunction="ease-out">
@@ -28,7 +28,7 @@ export function Content(props:ShowModsProps) {
         {/* Modules */}
         {(styles) => showMods ? 
         <ScrollContent style={{...styles, ...modsStyle}}>
-            <Repeat n={30} text="Hi second"/>
+            <Repeat n={30} text="Hi third"/>
         </ScrollContent> : <></>}
   
       </Transition>
