@@ -58,7 +58,7 @@ function Content(props:ShowModsProps) {
     // Prerequisite errors
     <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
       <ScrollContent style={prereqStyle}>
-        <Repeat n={15} text="Hi first"/>
+        <Repeat n={15} text="Hi!"/>
       </ScrollContent>
 
       <Transition mounted={showMods} transition="slide-up" duration={100} timingFunction="ease-in-out">
