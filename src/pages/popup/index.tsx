@@ -7,20 +7,25 @@ import { MantineProvider } from "@mantine/core";
 
 refreshOnUpdate("pages/popup");
 
+async function requestContentScript() {
+  console.log("Requesting tab");
+  const queryOptions = { active: true, lastFocusedWindow:true };
+  const [tab] = await chrome.tabs.query(queryOptions);
+  console.log("Got tab:")
+  console.log(tab);
+
+  if (tab) {
+    chrome.tabs.sendMessage(tab.id, { type: 'hi from popup' }, (response) => {
+      console.log("Got response from content script:");
+      console.log(response);
+    });
+  }
+}
+
 function Root() {
-  // useEffect(() => {
-  //   console.log("hi from root");
-
-  //   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  //     console.log(sender.tab ?
-  //                 "from a content script:" + sender.tab.url :
-  //                 "from the extension");
-
-  //     console.log("Request:", request);
-
-  //   },)
-  // }, []);
-
+  useEffect(() => {
+    requestContentScript();
+  });
   return (
     <MantineProvider theme={{
       // Font from NUSMods
@@ -36,17 +41,6 @@ function init() {
   if (!appContainer) {
     throw new Error("Can not find #app-container");
   }
-
-  console.log("hi from init");
-
-  chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    console.log(sender.tab ?
-                "from a content script:" + sender.tab.url :
-                "from the extension");
-
-    console.log("Request:", request);
-
-  },)
 
   const root = createRoot(appContainer);
   root.render(
