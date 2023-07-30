@@ -21,6 +21,21 @@ type Module = {
 // Return Module from content script response on nusmods.com
 // 'CS1010S Programming Methodology - NUSMods'
 // 'Timetable - NUSMods'
+
+// Based on NUSMods repo (30/07/2023)
+/*
+- it sets pageTitle in ModulePageContent to “{moduleCode} {title}”
+    - where module code, title come from NUSMods api
+    - https://github.com/nusmodifications/nusmods/blob/master/website/src/views/modules/ModulePageContent.tsx
+
+- This goes to Title.tsx as a child {pageTitle}
+- Title.tsx renders <title> {children} >/title>
+    - https://github.com/nusmodifications/nusmods/blob/master/website/src/views/components/Title.tsx#L10
+
+- Helmet titleTemplate takes %s from children of <title> .. </title> and does %s - brandName
+    - https://stackoverflow.com/questions/53953820/how-does-s-reference-the-title-attribute-inside-the-helmet-component
+*/
+
 function getModuleFromContentResponse(response:ContentScriptGetModuleResponse):Opt.Option<Module> {
     if (response.length == 0) {
         return Opt.none;
@@ -47,7 +62,7 @@ function getModuleFromContentResponse(response:ContentScriptGetModuleResponse):O
 
 // Request content script for document title if hostname is nusmods.com
 // Return module code, module title parsed from document title
-export async function requestContentScript():Promise<Module> {
+export async function requestModuleFromContentScript():Promise<Module> {
     console.log("Requesting tab changed!");
     // Get activeTab
     const queryOptions = { active: true, lastFocusedWindow:true };
@@ -74,8 +89,6 @@ export async function requestContentScript():Promise<Module> {
         
         // if option is none: return Promise.reject(not a module page)
         // else: return Promise.resolve(module)
-
-        // return Promise.resolve(getModuleFromContentResponse(res));
         return pipe(
             getModuleFromContentResponse(res),
             Opt.match(

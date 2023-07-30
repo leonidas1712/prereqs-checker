@@ -4,14 +4,14 @@ import "@pages/popup/index.css";
 import Popup from "@pages/popup/Popup";
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
 import { MantineProvider } from "@mantine/core";
-import { requestContentScript } from "./helpers";
+import { requestModuleFromContentScript } from "./helpers";
 
 refreshOnUpdate("pages/popup");
 
 // set module here: pass down Option<Module> to popup
 function Root() {
   useEffect(() => {
-    requestContentScript()
+    requestModuleFromContentScript()
       .then((res) => console.log("Res from content script:", res))
       .catch((err) => console.log("Error while requesting:", err))
   });
