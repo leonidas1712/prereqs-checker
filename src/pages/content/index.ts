@@ -1,4 +1,4 @@
-console.log("CONTENT FROM PRE-REQ-EXT");
+console.log("Detected NUSMods course page changed");
 
 /**
  * @description
