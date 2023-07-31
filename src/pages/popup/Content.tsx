@@ -24,7 +24,9 @@ export function Content(props:ShowModsProps) {
           <Repeat n={15} text="Hi changes!"/>
         </ScrollContent> */}
 
-        <Prereqs />
+        <ScrollContent style={prereqStyle}>
+          <Prereqs />
+        </ScrollContent>
   
 
         {/* Modules */}

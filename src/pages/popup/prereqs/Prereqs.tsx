@@ -1,16 +1,8 @@
-import { ScrollContent } from "../common"
-import { Repeat } from "../common";
-
-const prereqStyle:React.CSSProperties = {
-    flex: '1',
-    backgroundColor:"#222324",
-    color:"#ff5138"
-};
+import { Stack, Container, Text, Center} from "@mantine/core";
+import { ScrollContent, Repeat } from "../common"
 
 export default function Prereqs() {
     return (
-        <ScrollContent style={prereqStyle}>
-          <Repeat n={4} text="Hi changes!"/>
-        </ScrollContent>
+        <Repeat n={20} text="Hi changes!"/>
     )
 }
