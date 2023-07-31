@@ -7,12 +7,11 @@ import { Content } from "./Content";
 import { Module } from "@src/common";
 import * as Opt from "fp-ts/lib/Option";
 
-type PopupProps = {
+export type ModuleProps = {
   module:Opt.Option<Module>
 
 }
-const Popup = (props:PopupProps) => {
-  console.log("Module opt within popup:", props.module);
+const Popup = (props:ModuleProps) => {
   // useEffect(() => {
   //   chrome.storage.local.get(["key"]).then((result:{ key: ModulesRecord}) => {
   //     console.log("Value from popup is: " + result.key['CS3233']);
@@ -23,7 +22,7 @@ const Popup = (props:PopupProps) => {
   return (
       <Box h="100%" bg="#aaa">  
         <Header showMods={showMods} setShowMods={setShowMods}/>
-        <Content showMods={showMods} setShowMods={setShowMods}/>
+        <Content module={props.module} showMods={showMods} setShowMods={setShowMods}/>
       </Box>
   );
 };

@@ -1,6 +1,7 @@
 import { Flex, Transition } from "@mantine/core";
 import { ShowModsProps, ScrollContent, Repeat, CONTENT_HEIGHT_PCT } from "./common";
 import Prereqs from "./prereqs/Prereqs";
+import { ModuleProps } from "./Popup";
 
 const prereqStyle:React.CSSProperties = {
     flex: '1',
@@ -14,8 +15,11 @@ const modsStyle:React.CSSProperties = {
 };
 
 // Content component containing prereqs validation and modules CRUD
-export function Content(props:ShowModsProps) {
+type ContentProps = ShowModsProps & ModuleProps;
+export function Content(props:ContentProps) {
     const { showMods, setShowMods } = props;
+
+    // Fetch prereq tree here if 
   
     return (
       // Prerequisite errors
@@ -25,7 +29,7 @@ export function Content(props:ShowModsProps) {
         </ScrollContent> */}
 
         <ScrollContent style={prereqStyle}>
-          <Prereqs />
+          <Prereqs module={props.module} />
         </ScrollContent>
   
 
