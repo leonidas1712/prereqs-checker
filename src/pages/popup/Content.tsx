@@ -15,6 +15,8 @@ const modsStyle:React.CSSProperties = {
 };
 
 // Content component containing prereqs validation and modules CRUD
+  // when no module: show view with message at top, divider, then Mods.tsx and hide mods toggle button
+  // have module: normal, just split in half etc
 type ContentProps = ShowModsProps & ModuleProps;
 export function Content(props:ContentProps) {
     const { showMods, setShowMods } = props;

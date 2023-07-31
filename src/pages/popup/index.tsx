@@ -29,22 +29,6 @@ function Root() {
       .catch((err) => console.log("Error while requesting:", err));
 
   },[]);
-
-  // useEffect(() => {
-  //   // requestModuleFromContentScript()
-  //   //   .then((res) => console.log("Res from content script:", res))
-  //   //   .catch((err) => console.log("Error while requesting:", err));
-
-  //   // log msgs
-  //   // to remove listener make the callback a constant
-  //   chrome.runtime.onMessage.addListener((msg, sender, sendRes) => {
-  //     console.log("Received msg inside Root");
-  //     console.log("Msg:", msg);
-  //   });
-
-  //   // chrome.runtime.removeListener for cleanup
-
-  // });
   return (
     <MantineProvider theme={DarkThemeOverride}>
       <Popup module={module} />

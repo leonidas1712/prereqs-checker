@@ -23,14 +23,7 @@ function ToggleModsBtn(props:ShowModsProps) {
         <ActionIcon component="button" onClick={click} color="yellow">{icon}</ActionIcon>
       </Tooltip>
     )
-  }
-
-// const align = createStyles((theme) => ({
-//   alignRight: {
-//     marginLeft:"auto"
-//     // justifySelf:"right"
-//   },
-// }));
+}
 
 export function Header(props:ShowModsProps) {
     const theme = useMantineTheme();
