@@ -24,10 +24,6 @@ export function Content(props:ContentProps) {
     return (
       // Prerequisite errors
       <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
-        {/* <ScrollContent style={prereqStyle}>
-          <Repeat n={15} text="Hi changes!"/>
-        </ScrollContent> */}
-
         <ScrollContent style={prereqStyle}>
           <Prereqs module={props.module} />
         </ScrollContent>

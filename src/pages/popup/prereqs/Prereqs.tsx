@@ -43,7 +43,9 @@ function ModDescription(props:ModuleProps) {
     );
 }
 
-export default function Prereqs(props:ModuleProps) {
+export type PrereqsProps = ModuleProps;
+
+export default function Prereqs(props:PrereqsProps) {
     const theme = useMantineTheme();
     return (
         <Container>
