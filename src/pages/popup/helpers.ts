@@ -3,7 +3,7 @@ import * as Opt from "fp-ts/lib/Option";
 import { NUSMODS_HOSTNAME } from "../../common"
 import { ContentScriptGetModuleResponse, GET_MODULE, Module } from "@src/common";
 import { pipe } from "fp-ts/lib/function";
-import { is_valid_mod_code } from "./common";
+import { MOD_CAPTURE_REGEX, is_valid_mod_code } from "./common";
 
 // Check if tab.url corresponds to NUSMods
 function isNusMods(url_str:string):boolean {
@@ -35,28 +35,30 @@ function getModuleFromContentResponse(response:ContentScriptGetModuleResponse):O
         return Opt.none;
     }
 
+    // extract <modCode title>
+    const match = response.match(MOD_CAPTURE_REGEX);
 
-    const first_split = response.split('-')[0].trim().split(' ');  // CS1010S,Programming,Methodology 
-
-    console.log("first split in getMod from:", first_split);
-
-
-    // TODO: filter mod code by regex
-    const mod_code = first_split[0]; // CS1010S
-
-    if (!is_valid_mod_code(mod_code)) {
+    if (match == null) {
         return Opt.none;
     }
 
-    const title = first_split.slice(1).join(' '); // Programming Methodology
+    const modAndTitleSplit = match.groups.mod.split(" "); // CS1010S,Programming,Methodology
+    const modCode = modAndTitleSplit[0]; // CS1010S
+
+    // e.g Courses - NUSMods (modCode becomes Courses)
+    if (!is_valid_mod_code(modCode)) {
+        return Opt.none;
+    }
+
+    const title = modAndTitleSplit.slice(1).join(" "); // Programming Methodology
 
     const mod:Module = {
-        moduleCode:mod_code,
+        moduleCode:modCode,
         title
     }
 
-    return Opt.some(mod)
-}   
+    return Opt.some(mod);
+}
 
 // Request content script for document title if hostname is nusmods.com
 // Return module code, module title parsed from document title
@@ -85,6 +87,8 @@ export async function requestModuleFromContentScript():Promise<Module> {
 
         // sendMessage to query content script for document.title
         const res:ContentScriptGetModuleResponse = await chrome.tabs.sendMessage(tab.id, GET_MODULE);
+        
+        getModuleFromContentResponse(res);
         
         // if option is none: return Promise.reject(not a module page)
         // else: return Promise.resolve(module)
