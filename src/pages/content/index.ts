@@ -1,4 +1,4 @@
-import { ContentScriptGetModuleResponse } from "@src/common";
+// import { ContentScriptGetModuleResponse } from "@src/common";
 
 console.log("Detected NUSMods course page changed");
 
@@ -16,11 +16,12 @@ const messagesFromReactAppListener = (
   sendResponse: (response) => void) => {
  
   console.log('[content.js]. Message received', msg);
-
+  // console.log("Message equals", msg == GET_MODULE); 
    // Respond with document.title - this contains module information
-  const response:ContentScriptGetModuleResponse = document.title;
+  const response:string = document.title;
 
   sendResponse(response);
 }
 
 chrome.runtime.onMessage.addListener(messagesFromReactAppListener);
+
