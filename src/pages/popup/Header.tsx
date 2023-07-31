@@ -1,4 +1,4 @@
-import { Text, Flex, Tooltip, ActionIcon, useMantineTheme } from "@mantine/core";
+import { Text, Flex, Tooltip, ActionIcon, useMantineTheme, Center, createStyles, Group } from "@mantine/core";
 import { ShowModsProps, HEADER_HEIGHT_PCT } from "./common";
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 
@@ -18,17 +18,44 @@ function ToggleModsBtn(props:ShowModsProps) {
   
     return (
       <Tooltip label={label} color={theme.other.priOrange}>
-        <ActionIcon component="button" onClick={click} color="yellow" ml="0.2rem">{icon}</ActionIcon>
+        <ActionIcon component="button" onClick={click} color="yellow" ml="0rem">{icon}</ActionIcon>
       </Tooltip>
     )
   }
 
+const align = createStyles((theme) => ({
+  alignRight: {
+    // marginLeft:"auto"
+    justifySelf:"right"
+  },
+}));
+
 export function Header(props:ShowModsProps) {
     const theme = useMantineTheme();
+    const { classes } = align();
+
     return (
-      <Flex h={HEADER_HEIGHT_PCT}  bg={theme.other.bgColorLight} justify={"center"} align={"center"}>
-        <Text fz="xl" align="center" color={theme.other.headerFontColor} fw={theme.other.titleFontWeight}>PrereqsChecker</Text>
-        <ToggleModsBtn showMods={props.showMods} setShowMods={props.setShowMods} />
-      </Flex>
+      // justify={"center"} 
+      // <Flex h={HEADER_HEIGHT_PCT} direction={"row"} bg={theme.other.bgColorLight} align={"center"}>
+      //   <Text 
+      //   fz="xl" 
+      //   color={theme.other.headerFontColor} 
+      //   fw={theme.other.titleFontWeight}>PrereqsChecker</Text>
+      //   <ToggleModsBtn showMods={props.showMods} setShowMods={props.setShowMods} />
+      // </Flex>
+
+      <Group h={HEADER_HEIGHT_PCT} bg={theme.other.bgColorLight} position="center">
+        {/* <div></div> */}
+        <Text 
+          fz={theme.other.titleFontSize} 
+          color={theme.other.headerFontColor} 
+          fw={theme.other.titleFontWeight}>
+            CS3282
+        </Text>
+
+        {/* <Group className={classes.alignRight}>
+          <ToggleModsBtn showMods={props.showMods} setShowMods={props.setShowMods} />
+        </Group> */}
+      </Group>
     );
 }

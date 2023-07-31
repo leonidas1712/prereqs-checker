@@ -12,6 +12,7 @@ declare module '@mantine/core' {
         modCardFontColor: string;
         warnCardBg: string;
         warnCardFontColor: string;
+        titleFontSize:string;
         titleFontWeight: number;
         headerFontColor:string
     }
@@ -25,6 +26,7 @@ const common = {
     modCardFontColor:'#0A2C12', // Planner
     warnCardBg:'#ffc107', // Planner warn card
     warnCardFontColor:'#3A2C00', // Planner warn card
+    titleFontSize:"1.3rem",
     titleFontWeight:700
 };
 
