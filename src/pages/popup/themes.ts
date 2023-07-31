@@ -44,17 +44,3 @@ export const DarkThemeOverride:MantineThemeOverride = {
         headerFontColor:"white"
     }
 };
-
-
-
-// secondaryFontColor: string;
-// bgColor: string;
-// bgColorLight: string;
-// fadedFontColor: string;
-// priOrange: string;
-// successGreen: string;
-// modCardBg: string;
-// modCardFontColor: string;
-// warnCardBg: string;
-// warnCardFontColor: string;
-// titleFontWeight: number;
