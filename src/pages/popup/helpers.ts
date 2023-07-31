@@ -35,7 +35,11 @@ function getModuleFromContentResponse(response:ContentScriptGetModuleResponse):O
         return Opt.none;
     }
 
+
     const first_split = response.split('-')[0].trim().split(' ');  // CS1010S,Programming,Methodology 
+
+    console.log("first split in getMod from:", first_split);
+
 
     // TODO: filter mod code by regex
     const mod_code = first_split[0]; // CS1010S

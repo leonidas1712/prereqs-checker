@@ -6,6 +6,7 @@ import { Module } from "@src/common";
 
 function ModDescription(props:ModuleProps) {
     const theme = useMantineTheme();
+    console.log("Module in module desc:", props.module);
     const matcher = match(() => {
         return (
             <>
@@ -26,7 +27,12 @@ function ModDescription(props:ModuleProps) {
                 </Center>
 
                 <Center>
-                    <Text c={theme.other.secondaryFontColor} fz={theme.other.subtitleFontSize} fw={theme.other.titleFontWeight}>{module.title}</Text>
+                    <Text 
+                    c={theme.other.secondaryFontColor} 
+                    fz={theme.other.subtitleFontSize} 
+                    fw={theme.other.titleFontWeight}
+                    align="center"
+                    >{module.title}</Text>
                 </Center>
             </>
         );
@@ -39,7 +45,6 @@ function ModDescription(props:ModuleProps) {
 
 export default function Prereqs(props:ModuleProps) {
     const theme = useMantineTheme();
-    console.log("Module from prereqs:", props.module);
     return (
         <Container>
             <ModDescription module={props.module}/>
