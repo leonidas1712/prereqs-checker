@@ -2,7 +2,7 @@ import { Text, Flex, Tooltip, ActionIcon, useMantineTheme, Center, createStyles,
 import { ShowModsProps, HEADER_HEIGHT_PCT } from "./common";
 import { FaEye, FaEyeSlash, FaArrowsRotate } from 'react-icons/fa6';
 
-const ICON_SIZE="1.2rem";
+// const ICON_SIZE="1.2rem";
 
 function ToggleModsBtn(props:ShowModsProps) {
     const { showMods, setShowMods } = props;
@@ -14,7 +14,9 @@ function ToggleModsBtn(props:ShowModsProps) {
     };
   
     const label=showMods ? "Hide mods" : "Show mods";
-    const icon = showMods ? <FaEyeSlash size={ICON_SIZE} color={theme.other.secondaryFontColor}/> : <FaEye size={ICON_SIZE} color={theme.other.secondaryFontColor}/>
+    const icon = showMods ? 
+    <FaEyeSlash size={theme.other.iconSize} color={theme.other.secondaryFontColor}/> : 
+    <FaEye size={theme.other.iconSize} color={theme.other.secondaryFontColor}/>;
   
     return (
       <Tooltip label={label} color={theme.other.priOrange}>
@@ -23,28 +25,16 @@ function ToggleModsBtn(props:ShowModsProps) {
     )
   }
 
-const align = createStyles((theme) => ({
-  alignRight: {
-    marginLeft:"auto"
-    // justifySelf:"right"
-  },
-}));
+// const align = createStyles((theme) => ({
+//   alignRight: {
+//     marginLeft:"auto"
+//     // justifySelf:"right"
+//   },
+// }));
 
 export function Header(props:ShowModsProps) {
     const theme = useMantineTheme();
-    const { classes } = align();
-
     return (
-      // justify={"center"} 
-      // <Flex h={HEADER_HEIGHT_PCT} direction={"row"} bg={theme.other.bgColorLight} align={"center"}>
-        // <Text 
-        // fz="xl" 
-        // color={theme.other.headerFontColor} 
-        // fw={theme.other.titleFontWeight}>PrereqsChecker</Text>
-        // <ToggleModsBtn showMods={props.showMods} setShowMods={props.setShowMods} />
-      // </Flex>
-
-
       <Group h={HEADER_HEIGHT_PCT} bg={theme.other.bgColorLight} position="center" align="center">
         <Grid w="100%" grow>
 
@@ -56,7 +46,7 @@ export function Header(props:ShowModsProps) {
               <Text 
                 fz={theme.other.titleFontSize}
                 color={theme.other.headerFontColor} 
-                fw={theme.other.titleFontWeight}>CS3282
+                fw={theme.other.titleFontWeight}>ModChecker
               </Text>
             </Group>
           </Grid.Col>
@@ -64,7 +54,7 @@ export function Header(props:ShowModsProps) {
 
           {/* Buttons */}
           <Grid.Col span={4}>
-            <Group position="right" spacing={2} mr={20}>
+            <Group position="right" spacing={2}>
               <ToggleModsBtn showMods={props.showMods} setShowMods={props.setShowMods} />
             </Group>
           </Grid.Col>
