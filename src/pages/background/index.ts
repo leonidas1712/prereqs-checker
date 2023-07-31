@@ -20,10 +20,12 @@ get_mods().then((res) => {
     });
 })
 
+// when tab is updated (i.e new url) send message with tab
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+    console.log("TabId from bg:", tabId);
     console.log("Change info from background script", changeInfo);
 
-    chrome.runtime.sendMessage(changeInfo)
+    chrome.runtime.sendMessage(tab)
         .then((res) => console.log("Res after sending frm bg:", res))
         .catch((err) => console.log("Err when sending frm bg:", err));
     
