@@ -1,7 +1,7 @@
 // Helper functions
 import * as Opt from "fp-ts/lib/Option";
 import { NUSMODS_HOSTNAME } from "../../common"
-import { ContentScriptGetModuleResponse, GET_MODULE } from "@src/common";
+import { ContentScriptGetModuleResponse, GET_MODULE, Module } from "@src/common";
 import { pipe } from "fp-ts/lib/function";
 import { is_valid_mod_code } from "./common";
 
@@ -11,12 +11,6 @@ function isNusMods(url_str:string):boolean {
     console.log("Hostname:", hostname);
     return hostname==NUSMODS_HOSTNAME;
 }
-
-// Should return Option<Module> of module code and title
-export type Module = {
-    moduleCode:string,
-    title:string
-};
 
 // Return Module from content script response on nusmods.com
 // 'CS1010S Programming Methodology - NUSMods'

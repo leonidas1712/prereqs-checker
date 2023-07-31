@@ -14,9 +14,14 @@ export type ContentScriptGetModuleResponse = string;
 export type ModuleCode = string; // E.g. "CS3216"
 export type ModuleTitle = string;
 
-export type ModuleCondensed = Readonly<{
-    moduleCode: ModuleCode;
-    title: ModuleTitle;
-}>;
+// export type ModuleCondensed = Readonly<{
+//     moduleCode: ModuleCode;
+//     title: ModuleTitle;
+// }>;
 
 export type ModulesRecord = Record<ModuleCode, ModuleTitle>;
+
+export type Module = {
+    moduleCode:ModuleCode,
+    title:ModuleTitle
+};

@@ -4,9 +4,15 @@ import { Box } from "@mantine/core";
 
 import { Header } from "./Header";
 import { Content } from "./Content";
-import { ModuleCondensed, ModulesRecord } from "@src/common";
+import { Module } from "@src/common";
+import * as Opt from "fp-ts/lib/Option";
 
-const Popup = () => {
+type PopupProps = {
+  module:Opt.Option<Module>
+
+}
+const Popup = (props:PopupProps) => {
+  console.log("Module opt within popup:", props.module);
   // useEffect(() => {
   //   chrome.storage.local.get(["key"]).then((result:{ key: ModulesRecord}) => {
   //     console.log("Value from popup is: " + result.key['CS3233']);
