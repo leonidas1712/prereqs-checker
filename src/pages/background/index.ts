@@ -22,7 +22,13 @@ get_mods().then((res) => {
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     console.log("Change info from background script", changeInfo);
-  });
+
+    chrome.runtime.sendMessage(changeInfo)
+        .then((res) => console.log("Res after sending frm bg:", res))
+        .catch((err) => console.log("Err when sending frm bg:", err));
+    
+    console.log("Sent message from bg");
+});
 
 // chrome.runtime.onStartup.addListener(() => {
 //     console.log("On startup listener in background");

@@ -10,12 +10,20 @@ import { DarkThemeOverride } from "./themes";
 refreshOnUpdate("pages/popup");
 
 
+// Refresh the useEffect here when content title changes
+
 // set module here: pass down Option<Module> to popup
 function Root() {
   useEffect(() => {
-    requestModuleFromContentScript()
-      .then((res) => console.log("Res from content script:", res))
-      .catch((err) => console.log("Error while requesting:", err))
+    // requestModuleFromContentScript()
+    //   .then((res) => console.log("Res from content script:", res))
+    //   .catch((err) => console.log("Error while requesting:", err));
+
+      // log msgs
+    chrome.runtime.onMessage.addListener((msg, sender, sendRes) => {
+      console.log("Received msg inside Root");
+      console.log("Msg:", msg);
+    });
   });
   return (
     <MantineProvider theme={DarkThemeOverride}>

@@ -68,6 +68,7 @@ export async function requestModuleFromContentScript():Promise<Module> {
     const queryOptions = { active: true, lastFocusedWindow:true };
   
       try {
+        // send to tab
         const [tab] = await chrome.tabs.query(queryOptions);
         console.log("Got tab:", tab)
 

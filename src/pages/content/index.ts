@@ -23,5 +23,5 @@ const messagesFromReactAppListener = (
   sendResponse(response);
 }
 
-chrome.runtime.onMessage.addListener(messagesFromReactAppListener);
+// chrome.runtime.onMessage.addListener(messagesFromReactAppListener);
 
