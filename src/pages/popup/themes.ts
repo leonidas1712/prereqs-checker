@@ -40,7 +40,7 @@ export const DarkThemeOverride:MantineThemeOverride = {
         secondaryFontColor:'#aaa', // paragraph font color
         bgColor:'#222324', // background color
         bgColorLight:'#292929', // for header
-        fadedFontColor:'#aeb1b5', // faded font color,
+        fadedFontColor:'#7d7d7d', // faded font color,
         headerFontColor:"white"
     }
 };
