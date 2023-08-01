@@ -41,26 +41,29 @@ describe("test Content", () => {
         window.ResizeObserver=ResizeObserver;
     });
 
-    test('that Prereqs does not render when no module', () => {
-        const content_props:ContentProps = {
-            module:none,
-            showMods:false,
-            setShowMods:vi.fn()
-        };
-    
-        const { queryByTestId } = render(<Content {...content_props}/>)
-        expect(queryByTestId("prereqs")).toBe(null);
-    });
+    describe("when no module", () => {
+        test('that Prereqs does not render', () => {
+            const content_props:ContentProps = {
+                module:none,
+                showMods:false,
+                setShowMods:vi.fn()
+            };
+        
+            const { queryByTestId } = render(<Content {...content_props}/>)
+            expect(queryByTestId("prereqs")).toBe(null);
+        });
+    })
 
-    test('that Prereqs renders when some module', () => {
-        const content_props:ContentProps = {
-            module:someModule(),
-            showMods:false,
-            setShowMods:vi.fn()
-        };
-    
-        const { getByTestId } = render(<Content {...content_props}/>)
-        expect(getByTestId("prereqs")).toBeInTheDocument();
+    describe("when some module", () => {
+        test('that Prereqs renders', () => {
+            const content_props:ContentProps = {
+                module:someModule(),
+                showMods:false,
+                setShowMods:vi.fn()
+            };
+        
+            const { getByTestId } = render(<Content {...content_props}/>)
+            expect(getByTestId("prereqs")).toBeInTheDocument();
+        });
     });
-
 })
