@@ -40,7 +40,7 @@ function EmptyModDescription() {
 type ContentProps = ShowModsProps & ModuleProps;
 export function Content(props:ContentProps) {
     const { showMods, setShowMods } = props;
-    console.log("Opt module within <Content/> is none:", isNone(props.module));
+    console.log("Opt module within <Content/>:", props.module);
 
     const prereqsMatcher = match<Module,JSX.Element>(
     // No module -> can't show prereqs, just empty
@@ -64,13 +64,15 @@ export function Content(props:ContentProps) {
       <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
         {/* Empty mod message if empty */}
         { isNone(props.module) ? <EmptyModDescription /> : <></> }
+        
         <ScrollContent style={prereqStyle}>
           {/* <Prereqs module={props.module} /> */}
           { prereqsMatcher(props.module) }
         </ScrollContent>
   
-
-        {showMods ? <ScrollContent style={modsStyle}>
+        {/*  style={modsStyle} */}
+        { (isNone(props.module) ||  showMods) ? 
+        <ScrollContent style={isNone(props.module) ? {} : modsStyle}>
           <Mods />
         </ScrollContent> : <></> }
       </Flex>
