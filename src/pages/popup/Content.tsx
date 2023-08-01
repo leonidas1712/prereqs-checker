@@ -1,4 +1,4 @@
-import { Flex, Center, Text, useMantineTheme, Box, NavLink, createStyles } from "@mantine/core";
+import { Flex, Center, Text, useMantineTheme, Box, NavLink, createStyles, Title } from "@mantine/core";
 import { ShowModsProps, ScrollContent, CONTENT_HEIGHT_PCT } from "./common";
 import Prereqs from "./prereqs/Prereqs";
 import { ModuleProps } from "./common";
@@ -30,10 +30,11 @@ function ModDescription(props:ModuleProps) {
     return (
       <>
         <Center>
-            <Text fw={theme.other.titleFontWeight} c={theme.other.fadedFontColor} fz={"lg"}>No module found to check.</Text>
+          <Title order={4} fz={"lg"} c={theme.other.fadedFontColor}>No module found to check.</Title>
         </Center>
+
         <Center>
-            <Text c={theme.other.priOrange} fz={"md"}>(visit {link} to find a module)</Text>
+            <Title order={5} fw={theme.other.subtitleFontWeight} c={theme.other.priOrange} fz={"md"}>(visit {link} to find a module)</Title>
         </Center>
       </>
     );

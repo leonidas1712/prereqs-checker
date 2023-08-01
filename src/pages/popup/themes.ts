@@ -16,6 +16,7 @@ declare module '@mantine/core' {
         titleFontSize:string;
         titleFontWeight: number;
         subtitleFontSize:string;
+        subtitleFontWeight:number;
         headerFontColor:string;
         iconSize:string;
     }
@@ -32,6 +33,7 @@ const common = {
     titleFontSize:"1.25rem",
     titleFontWeight:700,
     subtitleFontSize:"1.1rem",
+    subtitleFontWeight:400,
     iconSize:"1.2rem"
 };
 
