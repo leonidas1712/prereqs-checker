@@ -1,13 +1,13 @@
 import { render } from '@testing-library/react';
 import { it, expect, test, vi } from 'vitest';
-import { ContentProps } from './Content';
+import { ContentProps } from '../pages/popup/Content';
 import { none } from 'fp-ts/lib/Option';
 import '@testing-library/jest-dom';
 
-import { MODS_TESTID } from './mods/Mods';
-import { Header, TOGGLE_MODS_TESTID } from './Header';
-import { beforeFn, someModule } from './test-utils/test-utils';
-import { ResizeObserver } from './test-utils/test-utils';
+import { MODS_TESTID } from '../pages/popup/mods/Mods';
+import { Header, TOGGLE_MODS_TESTID } from '../pages/popup/Header';
+import { beforeFn, someModule } from '../pages/popup/test-utils/test-utils';
+import { ResizeObserver } from '../pages/popup/test-utils/test-utils';
 
 beforeFn();
 

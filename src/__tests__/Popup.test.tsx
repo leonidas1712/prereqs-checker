@@ -1,15 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import { expect, test, vi } from 'vitest';
-import { Content, ContentProps, ModDescription } from './Content';
+import { Content, ContentProps, ModDescription } from '../pages/popup/Content';
 import { Module } from '@src/common';
 import { some,none, Option } from 'fp-ts/lib/Option';
 import userEvent from '@testing-library/user-event'
 
 import '@testing-library/jest-dom';
-import Popup from './Popup';
-import { beforeFn, someModule } from './test-utils/test-utils';
-import { TOGGLE_MODS_TESTID } from './Header';
-import Mods, { MODS_TESTID } from './mods/Mods';
+import Popup from '@src/pages/popup/Popup';
+import { beforeFn, someModule } from '../pages/popup/test-utils/test-utils';
+import { TOGGLE_MODS_TESTID } from '../pages/popup/Header';
+import Mods, { MODS_TESTID } from '../pages/popup/mods/Mods';
 
 beforeFn();
 

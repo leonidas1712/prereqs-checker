@@ -1,11 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import { expect, test, vi, it } from 'vitest';
-import { getModuleFromContentResponse } from './helpers';
+import { getModuleFromContentResponse } from '../pages/popup/helpers';
 import { some, none, match } from 'fp-ts/lib/Option';
 import '@testing-library/jest-dom';
 
 import { chrome } from 'jest-chrome'
 import { Module } from '@src/common';
+
+// TOOD If possible: implement mocks for chrome and test chrome related fns
 
 describe("[getModuleFromContentResponse] when parsing module from content script response", () => {
     it("parses valid input correctly", () => {
