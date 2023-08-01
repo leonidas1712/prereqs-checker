@@ -19,17 +19,46 @@ const modsStyle:React.CSSProperties = {
     backgroundColor:"#aaa"
 };
 
-// Description to show at the top when not on a mod page
-function EmptyModDescription() {
+// Description to show at the top - either module code and title or empty mod message
+function ModDescription(props:ModuleProps) {
   const theme = useMantineTheme();
+
+  const matcher = match<Module, JSX.Element>(() => {
+    // When no module
+    return (
+      <>
+        <Center>
+            <Text fw={theme.other.titleFontWeight} c={theme.other.fadedFontColor} fz={"lg"}>No module found to validate.</Text>
+        </Center>
+        <Center>
+            <Text c={theme.other.priOrange} fz={"md"}>(visit nusmods.com/courses to find a module)</Text>
+        </Center>
+      </>
+    );
+  }, (module) => {
+    // Show module code and title
+    return (
+      <>
+      <Center>
+      <Text c={theme.other.priOrange} fz={theme.other.titleFontSize} fw={theme.other.titleFontWeight}>{module.moduleCode}</Text>
+      </Center>
+    
+      {/* <Center>
+        <Text 
+          c={theme.other.secondaryFontColor} 
+          fz={theme.other.subtitleFontSize} 
+          fw={theme.other.titleFontWeight}
+          align="center"
+          >{module.title}
+        </Text>
+      </Center> */}
+      </>
+    );
+  });
+
   return (
     <Box bg={theme.other.bgColor}>
-      <Center>
-          <Text fw={theme.other.titleFontWeight} c={theme.other.fadedFontColor} fz={"lg"}>No module found to validate.</Text>
-      </Center>
-      <Center>
-          <Text c={theme.other.priOrange} fz={"md"}>(visit nusmods.com/courses to find a module)</Text>
-      </Center>
+      { matcher(props.module) }
     </Box>
   );
 }
@@ -59,11 +88,9 @@ export function Content(props:ContentProps) {
   
     return (
       <>
-      
-
       <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
-        {/* Empty mod message if empty */}
-        { isNone(props.module) ? <EmptyModDescription /> : <></> }
+        {/* Mod description or empty message */}
+        <ModDescription module={props.module}/>
         
         <ScrollContent style={prereqStyle}>
           {/* <Prereqs module={props.module} /> */}

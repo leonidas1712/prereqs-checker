@@ -35,20 +35,7 @@ export default function Prereqs(props:{ module: Module }) {
     console.log("Module in module desc:", mod);
     return (
         <>
-            <Center>
-                <Text fz={theme.other.titleFontSize} fw={theme.other.titleFontWeight}>{mod.moduleCode}</Text>
-            </Center>
-
-            <Center>
-                <Text 
-                c={theme.other.secondaryFontColor} 
-                fz={theme.other.subtitleFontSize} 
-                fw={theme.other.titleFontWeight}
-                align="center"
-                >{mod.title}</Text>
-            </Center>
-
-            <Repeat n={30} text={"Prereq tree"}/>
+          <Repeat n={30} text={"Prereq tree"}/>
         </>
     );
 }
