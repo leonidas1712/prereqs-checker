@@ -14,5 +14,6 @@ function someModule():Option<Module> {
 
 it('should show empty mod message when no module', () => {
     const { getByRole } = render(<ModDescription module={none}/>)
-    expect(getByRole("heading", { level: 4 })).toHaveTextContent("No module found to check.")
+    expect(getByRole("heading", { level: 4 })).toHaveTextContent("No module found to check");
+    expect(getByRole("link")).toHaveTextContent("NUSMods");
 });
