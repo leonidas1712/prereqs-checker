@@ -69,6 +69,7 @@ export function Content(props:ContentProps) {
 
   // styles for prereqs scroll area and mods scroll area
   // flex ratio defines ratio of scroll area sizes
+  // not useStyles because we need actual objects
   const prereqStyle:React.CSSProperties = {
     flex: '1',
     backgroundColor:theme.other.bgColor,
