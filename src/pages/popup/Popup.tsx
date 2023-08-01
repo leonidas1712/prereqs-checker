@@ -13,6 +13,8 @@ const Popup = (props:ModuleProps) => {
   //     console.log("Num of keys:", Object.keys(result.key).length);
   //   });
   // });
+
+  // initially don't show mods
   const [showMods, setShowMods] = useState(false);
   return (
       <Box h="100%" bg="#333">  

@@ -30,6 +30,7 @@ export const contentPropsSomeModule:ContentProps = {
     setShowMods:vi.fn()
 };
 
+// Provides mocks for some global objects that are usually irrelevant
 export function beforeFn() {
     beforeAll(() => {
         window.ResizeObserver=ResizeObserver;
