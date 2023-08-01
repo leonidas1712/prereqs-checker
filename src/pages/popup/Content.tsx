@@ -14,6 +14,7 @@ const prereqStyle:React.CSSProperties = {
     color:"#ff5138"
 };
 
+// 1.35
 const modsStyle:React.CSSProperties = {
     flex: '1.35',
     backgroundColor:'#333'
@@ -26,7 +27,7 @@ const useStyles = createStyles((theme) => ({
     '&:hover': {
       color:theme.other.warnCardBg
     }
-  }
+  },
 }));
 
 // Description to show at the top - either module code and title or empty mod message
@@ -54,19 +55,9 @@ function ModDescription(props:ModuleProps) {
     // Show module code and title
     return (
       <>
-      <Center>
-      <Text c={theme.other.priOrange} fz={theme.other.titleFontSize} fw={theme.other.titleFontWeight}>{module.moduleCode}</Text>
-      </Center>
-    
-      {/* <Center>
-        <Text 
-          c={theme.other.secondaryFontColor} 
-          fz={theme.other.subtitleFontSize} 
-          fw={theme.other.titleFontWeight}
-          align="center"
-          >{module.title}
-        </Text>
-      </Center> */}
+        <Center>
+        <Text c={theme.other.priOrange} fz={theme.other.titleFontSize} fw={theme.other.titleFontWeight}>{module.moduleCode}</Text>
+        </Center>
       </>
     );
   });
@@ -86,6 +77,8 @@ export function Content(props:ContentProps) {
     const { showMods, setShowMods } = props;
     console.log("Opt module within <Content/>:", props.module);
 
+    const { classes } = useStyles();
+
     const prereqsMatcher = match<Module,JSX.Element>(
     // No module -> can't show prereqs, just empty
     () => {
@@ -103,19 +96,19 @@ export function Content(props:ContentProps) {
   
     return (
       <>
+      {/* Styles applied outside because applied to entire ScrollArea */}
       <Flex direction={"column"} align={"stretch"} justify={"stretch"} style={{height:CONTENT_HEIGHT_PCT}}>
         {/* Mod description or empty message */}
         <ModDescription module={props.module}/>
         
         <ScrollContent style={prereqStyle}>
-          {/* <Prereqs module={props.module} /> */}
-          { prereqsMatcher(props.module) }
+            { prereqsMatcher(props.module) }
         </ScrollContent>
   
-        {/*  style={modsStyle} */}
+        {/* Mods */}
         { (isNone(props.module) ||  showMods) ? 
-        <ScrollContent style={isNone(props.module) ? { backgroundColor:'#333' } : modsStyle}>
-          <Mods />
+        <ScrollContent style={isNone(props.module) ? { backgroundColor: '#333'} : modsStyle}>
+            <Mods />
         </ScrollContent> : <></> }
       </Flex>
       </>

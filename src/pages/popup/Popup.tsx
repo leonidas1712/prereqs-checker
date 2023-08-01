@@ -15,7 +15,7 @@ const Popup = (props:ModuleProps) => {
   // });
   const [showMods, setShowMods] = useState(false);
   return (
-      <Box h="100%" bg="#aaa">  
+      <Box h="100%" bg="#333">  
         <Header module={props.module} showMods={showMods} setShowMods={setShowMods}/>
         <Content module={props.module} showMods={showMods} setShowMods={setShowMods}/>
       </Box>
