@@ -18,3 +18,16 @@ export async function get_mods():Promise<ModulesRecord> {
         return Promise.reject(`Error getting module list: ${error}`);
     }
 }
+
+// Get mods and store in chrome.local
+export const ALL_MODS = "all_mods";
+export async function store_mods_list() {
+    await get_mods().then((res) => {
+        chrome.storage.local.set({ ALL_MODS: res }).then(() => {
+            console.log("Value is set to (first 5):", res);
+        });
+    }).catch((err) => console.log("Error when storing mods:", err))
+
+
+    console.log("Successfully stored mods:",Date());
+}
