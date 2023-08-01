@@ -15,8 +15,8 @@ const prereqStyle:React.CSSProperties = {
 };
 
 const modsStyle:React.CSSProperties = {
-    flex: '1.2',
-    backgroundColor:"#aaa"
+    flex: '1.35',
+    backgroundColor:'#333'
 };
 
 // Description to show at the top - either module code and title or empty mod message
@@ -99,7 +99,7 @@ export function Content(props:ContentProps) {
   
         {/*  style={modsStyle} */}
         { (isNone(props.module) ||  showMods) ? 
-        <ScrollContent style={isNone(props.module) ? {} : modsStyle}>
+        <ScrollContent style={isNone(props.module) ? { backgroundColor:'#333' } : modsStyle}>
           <Mods />
         </ScrollContent> : <></> }
       </Flex>
