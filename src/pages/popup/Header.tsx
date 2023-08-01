@@ -4,6 +4,8 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import { ModuleProps } from "./common";
 import { isSome } from "fp-ts/lib/Option";
 
+export const TOGGLE_MODS_TESTID="toggle-mods";
+
 function ToggleModsBtn(props:ShowModsProps) {
     const { showMods, setShowMods } = props;
     const theme = useMantineTheme();
@@ -19,7 +21,7 @@ function ToggleModsBtn(props:ShowModsProps) {
     <FaEye size={theme.other.iconSize} color={theme.other.secondaryFontColor}/>;
   
     return (
-      <Tooltip label={label} color={theme.other.priOrange}>
+      <Tooltip label={label} color={theme.other.priOrange} data-testid={TOGGLE_MODS_TESTID}>
         <ActionIcon component="button" onClick={click} color="yellow">{icon}</ActionIcon>
       </Tooltip>
     )

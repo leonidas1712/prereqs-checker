@@ -7,6 +7,7 @@ import '@testing-library/jest-dom';
 
 import { PREREQS_TESTID } from './prereqs/Prereqs';
 import { MODS_TESTID } from './mods/Mods';
+import { TOGGLE_MODS_TESTID } from './Header';
 
 // Mock ResizeObserver because of ScrollArea
 class ResizeObserver {
@@ -53,8 +54,6 @@ describe("test Content", () => {
 
     describe("when no module", () => {
         test('that Prereqs does not render', () => {
-            
-        
             const { queryByTestId } = render(<Content {...content_props}/>)
             expect(queryByTestId(PREREQS_TESTID)).toBe(null);
         });
@@ -63,16 +62,21 @@ describe("test Content", () => {
             const { getByTestId } = render(<Content {...content_props}/>)
             expect(getByTestId(MODS_TESTID)).toBeInTheDocument();
         });
+
+        test('that ToggleModsBtn does not render', () => {
+            const { queryByTestId } = render(<Content {...content_props}/>)
+            expect(queryByTestId(TOGGLE_MODS_TESTID)).toBe(null);
+        });
     })
 
     describe("when some module", () => {
+        const content_props:ContentProps = {
+            module:someModule(),
+            showMods:false,
+            setShowMods:vi.fn()
+        };
+
         test('that Prereqs renders', () => {
-            const content_props:ContentProps = {
-                module:someModule(),
-                showMods:false,
-                setShowMods:vi.fn()
-            };
-        
             const { getByTestId } = render(<Content {...content_props}/>)
             expect(getByTestId(PREREQS_TESTID)).toBeInTheDocument();
         });
