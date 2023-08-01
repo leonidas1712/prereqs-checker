@@ -24,18 +24,15 @@ function Root() {
 
   // To request for module upon initial page load (errs when not on nusmods.com)
   useEffect(() => {
-    sleep(1000).then((res) => {
-      requestModuleFromContentScript()
-      .then((res) => { 
-        console.log("Res from content script:", res);
+    requestModuleFromContentScript()
+    .then((res) => { 
+      console.log("Res from content script:", res);
+      setModule(Opt.some(res));
 
-        setModule(Opt.some(res));
- 
-      })
-      .catch((err) => console.log("Error while requesting:", err))
-      .finally(() => {
-        setLoading(false);
-      });
+    })
+    .catch((err) => console.log("Error while requesting:", err))
+    .finally(() => {
+      setLoading(false);
     });
   },[]);
   return (
