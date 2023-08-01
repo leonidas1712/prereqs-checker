@@ -4,7 +4,6 @@ import { getModuleFromContentResponse } from './helpers';
 import { some, none, match } from 'fp-ts/lib/Option';
 import '@testing-library/jest-dom';
 
-
 import { chrome } from 'jest-chrome'
 import { Module } from '@src/common';
 
@@ -45,16 +44,4 @@ describe("[getModuleFromContentResponse] when parsing module from content script
             throw new Error("getModuleFromContentResponse returned module on invalid input");
         })(res);
     });
-});
-
-describe("[requestModuleFromContentScript] when retrieving module from content script", () => {
-    it('rejects undefined tab', () => {
-        chrome.tabs.query.mockImplementation(() => undefined);
-    });
-});
-
-
-
-test("mock chrome", () => {
-    expect(true).toBe(true);
 });
