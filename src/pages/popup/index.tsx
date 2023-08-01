@@ -14,7 +14,6 @@ refreshOnUpdate("pages/popup");
 
 // Refresh the useEffect here when content title changes
 // React.SetStateAction<Opt.Option<Module>>
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 
 // set module here: pass down Option<Module> to popup

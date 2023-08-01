@@ -1,4 +1,6 @@
-import { Text, ScrollArea } from "@mantine/core";
+// File for common utils
+
+import { Text, ScrollArea, Center, Loader } from "@mantine/core";
 import { replicate } from "fp-ts/lib/Array";
 import * as Opt from "fp-ts/lib/Option";
 import { Module } from "@src/common";
@@ -66,3 +68,13 @@ export function ScrollContent(props:React.PropsWithChildren<ScrollProps>) {
         </ScrollArea>
     )
 }
+
+export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+export const Spinner = (props: { color: string }) => {
+    return (
+      <Center>
+        <Loader color={props.color} mt={10}/>
+      </Center>
+    );
+  };
