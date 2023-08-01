@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "@pages/popup/Popup.css";
-import { Box, useMantineTheme } from "@mantine/core";
+import { Box, Loader, useMantineTheme } from "@mantine/core";
 
 import { Header } from "./Header";
 import { Content } from "./Content";
 import { ModuleProps } from "./common";
 // change Box bg to use theme
+
+const Spinner = (props: { color: string }) => {
+  return (
+    <Loader color={props.color}/>
+  );
+};
 
 const Popup = (props:ModuleProps & { loading:boolean }) => {
   // useEffect(() => {
