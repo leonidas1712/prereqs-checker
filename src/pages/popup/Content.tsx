@@ -6,20 +6,6 @@ import { match, isNone } from "fp-ts/lib/Option";
 import { Module } from "@src/common";
 import Mods from "./mods/Mods";
 
-// styles for prereqs scroll area and mods scroll area
-// flex ratio defines ratio of scroll area sizes
-const prereqStyle:React.CSSProperties = {
-    flex: '1',
-    backgroundColor:"#222324",
-    color:"#ff5138"
-};
-
-// 1.35
-const modsStyle:React.CSSProperties = {
-    flex: '1.35',
-    backgroundColor:'#333'
-};
-
 const useStyles = createStyles((theme) => ({
   link: {
     textDecoration:"underline",
@@ -76,8 +62,24 @@ type ContentProps = ShowModsProps & ModuleProps;
 export function Content(props:ContentProps) {
     const { showMods, setShowMods } = props;
     console.log("Opt module within <Content/>:", props.module);
-
     const { classes } = useStyles();
+
+    const theme = useMantineTheme();
+
+
+  // styles for prereqs scroll area and mods scroll area
+  // flex ratio defines ratio of scroll area sizes
+  const prereqStyle:React.CSSProperties = {
+    flex: '1',
+    backgroundColor:theme.other.bgColor,
+    color:theme.other.priOrange
+  };
+
+  const MODS_FLEX='1.35'
+  const modsStyle:React.CSSProperties = {
+    backgroundColor:theme.other.modsBg,
+    color:theme.other.secondaryFontColor
+  };
 
     const prereqsMatcher = match<Module,JSX.Element>(
     // No module -> can't show prereqs, just empty
@@ -107,7 +109,7 @@ export function Content(props:ContentProps) {
   
         {/* Mods */}
         { (isNone(props.module) ||  showMods) ? 
-        <ScrollContent style={isNone(props.module) ? { backgroundColor: '#333'} : modsStyle}>
+        <ScrollContent style={isNone(props.module) ? modsStyle : {...modsStyle, flex:MODS_FLEX}}>
             <Mods />
         </ScrollContent> : <></> }
       </Flex>
