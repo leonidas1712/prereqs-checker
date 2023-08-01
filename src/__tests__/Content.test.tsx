@@ -8,7 +8,7 @@ import '@testing-library/jest-dom';
 import { PREREQS_TESTID } from '../pages/popup/prereqs/Prereqs';
 import { MODS_TESTID } from '../pages/popup/mods/Mods';
 
-import { ResizeObserver } from '../pages/popup/test-utils/test-utils';
+import { MockResizeObserver } from '../pages/popup/test-utils/test-utils';
 
 function someModule():Option<Module> {
     return some({
@@ -30,7 +30,7 @@ test('if ModDescription shows module code when some module', () => {
 
 describe("test Content", () => {
     beforeAll(() => {
-        window.ResizeObserver=ResizeObserver;
+        window.ResizeObserver=MockResizeObserver;
     });
 
     const content_props:ContentProps = {

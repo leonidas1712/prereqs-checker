@@ -11,7 +11,7 @@ export function someModule():Option<Module> {
 }
 
 // Mock ResizeObserver because of ScrollArea
-export class ResizeObserver {
+export class MockResizeObserver {
     observe() {
         return;
     }
@@ -33,7 +33,7 @@ export const contentPropsSomeModule:ContentProps = {
 // Provides mocks for some global objects that are usually irrelevant
 export function beforeFn() {
     beforeAll(() => {
-        window.ResizeObserver=ResizeObserver;
+        window.ResizeObserver=MockResizeObserver;
         // https://stackoverflow.com/questions/39830580/jest-test-fails-typeerror-window-matchmedia-is-not-a-function
         Object.defineProperty(window, 'matchMedia', {
             writable: true,

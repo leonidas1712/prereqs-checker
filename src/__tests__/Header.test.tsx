@@ -7,7 +7,7 @@ import '@testing-library/jest-dom';
 import { MODS_TESTID } from '../pages/popup/mods/Mods';
 import { Header, TOGGLE_MODS_TESTID } from '../pages/popup/Header';
 import { beforeFn, someModule } from '../pages/popup/test-utils/test-utils';
-import { ResizeObserver } from '../pages/popup/test-utils/test-utils';
+import { MockResizeObserver } from '../pages/popup/test-utils/test-utils';
 
 beforeFn();
 
