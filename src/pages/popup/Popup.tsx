@@ -28,7 +28,7 @@ const Popup = (props:ModuleProps & { loading:boolean }) => {
   return (
       <Box h="100%" bg={theme.other.bgColor}>  
         <Header module={props.module} showMods={showMods} setShowMods={setShowMods}/>
-        <Content module={props.module} showMods={showMods} setShowMods={setShowMods}/>
+        {props.loading ? <Spinner color={theme.other.priOrange} /> : <Content module={props.module} showMods={showMods} setShowMods={setShowMods}/> }
       </Box>
   );
 };

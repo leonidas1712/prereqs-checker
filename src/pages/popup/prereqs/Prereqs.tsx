@@ -14,7 +14,7 @@ export default function Prereqs(props:{ module: Module }) {
     console.log("Module in module desc:", mod);
     return (
         <div data-testid={PREREQS_TESTID}>
-          <Repeat n={5} text={"Prereq tree"}/>
+          <Repeat n={30} text={"Prereq tree"}/>
         </div>
     );
 }

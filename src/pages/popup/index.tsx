@@ -32,7 +32,10 @@ function Root() {
         setModule(Opt.some(res));
  
       })
-      .catch((err) => console.log("Error while requesting:", err));
+      .catch((err) => console.log("Error while requesting:", err))
+      .finally(() => {
+        setLoading(false);
+      });
     });
   },[]);
   return (
