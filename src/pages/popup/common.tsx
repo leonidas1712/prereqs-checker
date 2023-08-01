@@ -59,7 +59,9 @@ export function ScrollContent(props:React.PropsWithChildren<ScrollProps>) {
     };
 
     return (
-        <ScrollArea style={{...props.style, ...commonStyle}} type="auto">
+        <ScrollArea style=
+        {{...props.style, ...commonStyle}} 
+        >
         { props.children }
         </ScrollArea>
     )

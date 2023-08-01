@@ -2,6 +2,6 @@
 import { Repeat } from "../common";
 export default function Mods() {
     return (
-        <Repeat n={30} text="Hi from Mods!"/>
+        <Repeat n={50} text="Hi from Mods!"/>
     );
 }
