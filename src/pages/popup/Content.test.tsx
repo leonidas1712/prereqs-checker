@@ -5,6 +5,10 @@ import { Module } from '@src/common';
 import { some,none, Option } from 'fp-ts/lib/Option';
 import '@testing-library/jest-dom';
 
+import { PREREQS_TESTID } from './prereqs/Prereqs';
+import { MODS_TESTID } from './mods/Mods';
+
+// Mock ResizeObserver because of ScrollArea
 class ResizeObserver {
     observe() {
         return;
@@ -41,16 +45,23 @@ describe("test Content", () => {
         window.ResizeObserver=ResizeObserver;
     });
 
+    const content_props:ContentProps = {
+        module:none,
+        showMods:false,
+        setShowMods:vi.fn()
+    };
+
     describe("when no module", () => {
         test('that Prereqs does not render', () => {
-            const content_props:ContentProps = {
-                module:none,
-                showMods:false,
-                setShowMods:vi.fn()
-            };
+            
         
             const { queryByTestId } = render(<Content {...content_props}/>)
-            expect(queryByTestId("prereqs")).toBe(null);
+            expect(queryByTestId(PREREQS_TESTID)).toBe(null);
+        });
+
+        test('that Mods does render', () => {
+            const { getByTestId } = render(<Content {...content_props}/>)
+            expect(getByTestId(MODS_TESTID)).toBeInTheDocument();
         });
     })
 
@@ -63,7 +74,7 @@ describe("test Content", () => {
             };
         
             const { getByTestId } = render(<Content {...content_props}/>)
-            expect(getByTestId("prereqs")).toBeInTheDocument();
+            expect(getByTestId(PREREQS_TESTID)).toBeInTheDocument();
         });
     });
 })
