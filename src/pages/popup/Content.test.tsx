@@ -62,11 +62,6 @@ describe("test Content", () => {
             const { getByTestId } = render(<Content {...content_props}/>)
             expect(getByTestId(MODS_TESTID)).toBeInTheDocument();
         });
-
-        test('that ToggleModsBtn does not render', () => {
-            const { queryByTestId } = render(<Content {...content_props}/>)
-            expect(queryByTestId(TOGGLE_MODS_TESTID)).toBe(null);
-        });
     })
 
     describe("when some module", () => {
@@ -75,6 +70,11 @@ describe("test Content", () => {
             showMods:false,
             setShowMods:vi.fn()
         };
+
+        test('that module code is visible', () => {
+            const { getByRole } = render(<Content {...content_props}/>);
+            expect(getByRole("heading", { level: 2 })).toHaveTextContent("CS1101S");
+        });
 
         test('that Prereqs renders', () => {
             const { getByTestId } = render(<Content {...content_props}/>)
