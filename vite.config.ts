@@ -22,7 +22,9 @@ const enableHmrInBackgroundScript = true;
 
 export default defineConfig({
   test: {
-    environment:"jsdom"
+    environment:"jsdom",
+    globals:true,
+    setupFiles:"./test-utils/jest.setup.js"
   },
   resolve: {
     alias: {
