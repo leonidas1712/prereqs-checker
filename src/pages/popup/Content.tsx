@@ -1,7 +1,7 @@
 import { Flex, Transition } from "@mantine/core";
 import { ShowModsProps, ScrollContent, Repeat, CONTENT_HEIGHT_PCT } from "./common";
 import Prereqs from "./prereqs/Prereqs";
-import { ModuleProps } from "./Popup";
+import { ModuleProps } from "./common";
 
 const prereqStyle:React.CSSProperties = {
     flex: '1',

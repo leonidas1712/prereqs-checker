@@ -1,6 +1,7 @@
 import { Text, Flex, Tooltip, ActionIcon, useMantineTheme, Center, createStyles, Group, Grid, Space } from "@mantine/core";
 import { ShowModsProps, HEADER_HEIGHT_PCT } from "./common";
 import { FaEye, FaEyeSlash, FaArrowsRotate } from 'react-icons/fa6';
+import { ModuleProps } from "./common";
 
 // const ICON_SIZE="1.2rem";
 
@@ -25,7 +26,7 @@ function ToggleModsBtn(props:ShowModsProps) {
     )
 }
 
-export function Header(props:ShowModsProps) {
+export function Header(props:ModuleProps & ShowModsProps) {
     const theme = useMantineTheme();
     return (
       <Group h={HEADER_HEIGHT_PCT} bg={theme.other.bgColorLight} position="center" align="center">

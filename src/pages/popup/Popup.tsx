@@ -4,13 +4,8 @@ import { Box } from "@mantine/core";
 
 import { Header } from "./Header";
 import { Content } from "./Content";
-import { Module } from "@src/common";
-import * as Opt from "fp-ts/lib/Option";
+import { ModuleProps } from "./common";
 
-export type ModuleProps = {
-  module:Opt.Option<Module>
-
-}
 const Popup = (props:ModuleProps) => {
   // useEffect(() => {
   //   chrome.storage.local.get(["key"]).then((result:{ key: ModulesRecord}) => {
@@ -21,7 +16,7 @@ const Popup = (props:ModuleProps) => {
   const [showMods, setShowMods] = useState(false);
   return (
       <Box h="100%" bg="#aaa">  
-        <Header showMods={showMods} setShowMods={setShowMods}/>
+        <Header module={props.module} showMods={showMods} setShowMods={setShowMods}/>
         <Content module={props.module} showMods={showMods} setShowMods={setShowMods}/>
       </Box>
   );

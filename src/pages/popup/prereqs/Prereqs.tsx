@@ -1,6 +1,6 @@
 import { Stack, Container, Text, Center, useMantineTheme} from "@mantine/core";
 import { ScrollContent, Repeat } from "../common"
-import { ModuleProps } from "../Popup";
+import { ModuleProps } from "../common";
 import { match } from "fp-ts/lib/Option";
 import { Module } from "@src/common";
 
@@ -43,6 +43,7 @@ function ModDescription(props:ModuleProps) {
     );
 }
 
+// Later: add prereqTree
 export type PrereqsProps = ModuleProps;
 
 export default function Prereqs(props:PrereqsProps) {
