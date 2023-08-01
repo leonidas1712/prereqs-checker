@@ -59,7 +59,7 @@ export function ModDescription(props:ModuleProps) {
 // Content component containing prereqs validation and modules CRUD
   // when no module: show view with message at top, divider, then Mods.tsx and hide mods toggle button
   // have module: normal, just split in half etc
-type ContentProps = ShowModsProps & ModuleProps;
+export type ContentProps = ShowModsProps & ModuleProps;
 export function Content(props:ContentProps) {
     const { showMods, setShowMods } = props;
     console.log("Opt module within <Content/>:", props.module);
@@ -93,7 +93,7 @@ export function Content(props:ContentProps) {
     }, 
     // module -> show prereqs section
     (module) => {
-      return <Prereqs module={module} />
+      return <Prereqs module={module}/>
     });
 
     // Fetch prereq tree here if 
