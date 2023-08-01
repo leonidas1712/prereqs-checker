@@ -9,19 +9,7 @@ import { PREREQS_TESTID } from './prereqs/Prereqs';
 import { MODS_TESTID } from './mods/Mods';
 import { TOGGLE_MODS_TESTID } from './Header';
 
-// Mock ResizeObserver because of ScrollArea
-class ResizeObserver {
-    observe() {
-        return;
-    }
-    unobserve() {
-        return;
-    }
-    
-    disconnect() {
-        return;
-    }
-  }
+import { ResizeObserver } from './test-utils/test-utils';
 
 function someModule():Option<Module> {
     return some({

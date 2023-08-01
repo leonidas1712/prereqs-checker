@@ -21,8 +21,8 @@ function ToggleModsBtn(props:ShowModsProps) {
     <FaEye size={theme.other.iconSize} color={theme.other.secondaryFontColor}/>;
   
     return (
-      <Tooltip label={label} color={theme.other.priOrange} data-testid={TOGGLE_MODS_TESTID}>
-        <ActionIcon component="button" onClick={click} color="yellow">{icon}</ActionIcon>
+      <Tooltip label={label} color={theme.other.priOrange}>
+        <ActionIcon component="button" onClick={click} color="yellow" data-testid={TOGGLE_MODS_TESTID}>{icon}</ActionIcon>
       </Tooltip>
     )
 }
