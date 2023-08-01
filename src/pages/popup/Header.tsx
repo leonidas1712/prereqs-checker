@@ -1,9 +1,8 @@
-import { Text, Flex, Tooltip, ActionIcon, useMantineTheme, Center, createStyles, Group, Grid, Space } from "@mantine/core";
+import { Text, Tooltip, ActionIcon, useMantineTheme, Group, Grid, } from "@mantine/core";
 import { ShowModsProps, HEADER_HEIGHT_PCT } from "./common";
-import { FaEye, FaEyeSlash, FaArrowsRotate } from 'react-icons/fa6';
+import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import { ModuleProps } from "./common";
-
-// const ICON_SIZE="1.2rem";
+import { isSome } from "fp-ts/lib/Option";
 
 function ToggleModsBtn(props:ShowModsProps) {
     const { showMods, setShowMods } = props;
@@ -32,10 +31,12 @@ export function Header(props:ModuleProps & ShowModsProps) {
       <Group h={HEADER_HEIGHT_PCT} bg={theme.other.bgColorLight} position="center" align="center">
         <Grid w="100%" grow>
 
-          <Grid.Col span={4}></Grid.Col>
+          {/* So that title appears in center */}
+          <Grid.Col span={4}></Grid.Col> 
 
           <Grid.Col span={4}>
 
+            {/* Title */}
             <Group position="center">
               <Text 
                 fz={theme.other.titleFontSize}
@@ -48,9 +49,12 @@ export function Header(props:ModuleProps & ShowModsProps) {
 
           {/* Buttons */}
           <Grid.Col span={4}>
-            <Group position="right" spacing={2}>
-              <ToggleModsBtn showMods={props.showMods} setShowMods={props.setShowMods} />
-            </Group>
+
+            {isSome(props.module) ? 
+              <Group position="right" spacing={2}>
+                <ToggleModsBtn showMods={props.showMods} setShowMods={props.setShowMods} />
+              </Group> : <></>
+            }
           </Grid.Col>
         </Grid>
       </Group>

@@ -47,6 +47,8 @@ export default function Prereqs(props:{ module: Module }) {
                 align="center"
                 >{mod.title}</Text>
             </Center>
+
+            <Repeat n={30} text={"Prereq tree"}/>
         </>
     );
 }
