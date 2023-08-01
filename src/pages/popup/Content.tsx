@@ -1,4 +1,4 @@
-import { Flex, Center, Text, useMantineTheme, Box } from "@mantine/core";
+import { Flex, Center, Text, useMantineTheme, Box, NavLink, createStyles } from "@mantine/core";
 import { ShowModsProps, ScrollContent, CONTENT_HEIGHT_PCT } from "./common";
 import Prereqs from "./prereqs/Prereqs";
 import { ModuleProps } from "./common";
@@ -19,19 +19,34 @@ const modsStyle:React.CSSProperties = {
     backgroundColor:'#333'
 };
 
+const useStyles = createStyles((theme) => ({
+  link: {
+    textDecoration:"underline",
+    color:theme.other.priOrange,
+    '&:hover': {
+      color:theme.other.warnCardBg
+    }
+  }
+}));
+
 // Description to show at the top - either module code and title or empty mod message
 function ModDescription(props:ModuleProps) {
   const theme = useMantineTheme();
+  const { classes } = useStyles();
+
+  // const link = <NavLink component="a" href={"https://nusmods.com/courses?sem[0]=1&sem[1]=2&sem[2]=3&sem[3]=4"} label="NUSMods"></NavLink>
+  const link = <a href="https://nusmods.com/courses?sem[0]=1&sem[1]=2&sem[2]=3&sem[3]=4" target="_blank" rel="noreferrer"
+  className={classes.link}>NUSMods</a>
 
   const matcher = match<Module, JSX.Element>(() => {
     // When no module
     return (
       <>
         <Center>
-            <Text fw={theme.other.titleFontWeight} c={theme.other.fadedFontColor} fz={"lg"}>No module found to validate.</Text>
+            <Text fw={theme.other.titleFontWeight} c={theme.other.fadedFontColor} fz={"lg"}>No module found to check.</Text>
         </Center>
         <Center>
-            <Text c={theme.other.priOrange} fz={"md"}>(visit nusmods.com/courses to find a module)</Text>
+            <Text c={theme.other.priOrange} fz={"md"}>(visit {link} to find a module)</Text>
         </Center>
       </>
     );
