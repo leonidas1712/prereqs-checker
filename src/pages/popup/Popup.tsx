@@ -6,7 +6,7 @@ import { Header } from "./Header";
 import { Content } from "./Content";
 import { ModuleProps } from "./common";
 
-const Popup = (props:ModuleProps) => {
+const Popup = (props:ModuleProps & { loading:boolean }) => {
   // useEffect(() => {
   //   chrome.storage.local.get(["key"]).then((result:{ key: ModulesRecord}) => {
   //     console.log("Value from popup is: " + result.key['CS3233']);

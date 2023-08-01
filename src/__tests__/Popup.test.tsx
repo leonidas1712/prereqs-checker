@@ -16,7 +16,7 @@ beforeFn();
 describe("when some module",() => {
     test("that clicking toggle mods button toggles visibility of Mods", async () => {
         console.log("hi");
-        const { getByTestId } = render(<Popup module={someModule()}/>)
+        const { getByTestId } = render(<Popup module={someModule()} loading={false}/>)
         
         await userEvent.click(getByTestId(TOGGLE_MODS_TESTID))
         

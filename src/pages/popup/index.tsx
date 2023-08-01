@@ -20,7 +20,7 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 // set module here: pass down Option<Module> to popup
 function Root() {
   const [module, setModule] = useState<Opt.Option<Module>>(Opt.none);
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   // To request for module upon initial page load (errs when not on nusmods.com)
   useEffect(() => {
@@ -39,7 +39,7 @@ function Root() {
   },[]);
   return (
     <MantineProvider theme={DarkThemeOverride}>
-        <Popup module={module} />
+        <Popup module={module} loading={loading} />
     </MantineProvider>
   )
 }
