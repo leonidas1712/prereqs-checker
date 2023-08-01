@@ -16,8 +16,14 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+export function ModTest() {
+  return (
+    <div>Hi</div>
+  );
+}
+
 // Description to show at the top - either module code and title or empty mod message
-function ModDescription(props:ModuleProps) {
+export function ModDescription(props:ModuleProps) {
   const theme = useMantineTheme();
   const { classes } = useStyles();
 

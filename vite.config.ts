@@ -21,6 +21,9 @@ const isProduction = !isDev;
 const enableHmrInBackgroundScript = true;
 
 export default defineConfig({
+  test: {
+    environment:"jsdom"
+  },
   resolve: {
     alias: {
       "@src": srcDir,
