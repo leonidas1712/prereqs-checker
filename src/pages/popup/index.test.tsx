@@ -4,10 +4,11 @@ import { getModuleFromContentResponse } from './helpers';
 import { some, none, match } from 'fp-ts/lib/Option';
 import '@testing-library/jest-dom';
 
+
 import { chrome } from 'jest-chrome'
 import { Module } from '@src/common';
 
-describe("parsing of module from content script response", () => {
+describe("[getModuleFromContentResponse] when parsing module from content script response", () => {
     it("parses valid input correctly", () => {
         const valid = "CS2113 Software Engineering & Object-Oriented Programming - NUSMods";
         const res = getModuleFromContentResponse(valid);
@@ -45,6 +46,14 @@ describe("parsing of module from content script response", () => {
         })(res);
     });
 });
+
+describe("[requestModuleFromContentScript] when retrieving module from content script", () => {
+    it('rejects undefined tab', () => {
+        chrome.tabs.query.mockImplementation(() => undefined);
+    });
+});
+
+
 
 test("mock chrome", () => {
     expect(true).toBe(true);
