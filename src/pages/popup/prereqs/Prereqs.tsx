@@ -4,53 +4,49 @@ import { ModuleProps } from "../common";
 import { match } from "fp-ts/lib/Option";
 import { Module } from "@src/common";
 
-function ModDescription(props:ModuleProps) {
-    const theme = useMantineTheme();
-    console.log("Module in module desc:", props.module);
-    const matcher = match(() => {
-        return (
-            <>
-                <Center>
-                    <Text fw={theme.other.titleFontWeight} c={theme.other.fadedFontColor} fz={theme.other.titleFontSize}>No module found to validate.</Text>
-                </Center>
-                <Center>
-                    <Text fz={theme.other.fadedFontColor}>(visit nusmods.com/courses to find a module)</Text>
-                </Center>
-            </>
-        );
+// function ModDescription(props:{ module: Module }) {
+//     const theme = useMantineTheme();
+//     const mod = props.module;
+//     console.log("Module in module desc:", mod);
+//     return (
+//         <>
+//             <Center>
+//                 <Text fz={theme.other.titleFontSize} fw={theme.other.titleFontWeight}>{mod.moduleCode}</Text>
+//             </Center>
 
-    }, (module:Module) => {
-        return (
-            <>
-                <Center>
-                    <Text fz={theme.other.titleFontSize} fw={theme.other.titleFontWeight}>{module.moduleCode}</Text>
-                </Center>
-
-                <Center>
-                    <Text 
-                    c={theme.other.secondaryFontColor} 
-                    fz={theme.other.subtitleFontSize} 
-                    fw={theme.other.titleFontWeight}
-                    align="center"
-                    >{module.title}</Text>
-                </Center>
-            </>
-        );
-    });
-
-    return (
-        matcher(props.module)
-    );
-}
+//             <Center>
+//                 <Text 
+//                 c={theme.other.secondaryFontColor} 
+//                 fz={theme.other.subtitleFontSize} 
+//                 fw={theme.other.titleFontWeight}
+//                 align="center"
+//                 >{mod.title}</Text>
+//             </Center>
+//         </>
+//     );
+// }
 
 // Later: add prereqTree
 export type PrereqsProps = ModuleProps;
 
-export default function Prereqs(props:PrereqsProps) {
+export default function Prereqs(props:{ module: Module }) {
     const theme = useMantineTheme();
+    const mod = props.module;
+    console.log("Module in module desc:", mod);
     return (
-        <Container>
-            <ModDescription module={props.module}/>
-        </Container>
-    )
+        <>
+            <Center>
+                <Text fz={theme.other.titleFontSize} fw={theme.other.titleFontWeight}>{mod.moduleCode}</Text>
+            </Center>
+
+            <Center>
+                <Text 
+                c={theme.other.secondaryFontColor} 
+                fz={theme.other.subtitleFontSize} 
+                fw={theme.other.titleFontWeight}
+                align="center"
+                >{mod.title}</Text>
+            </Center>
+        </>
+    );
 }
