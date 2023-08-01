@@ -1,4 +1,4 @@
-import { Flex, Center, Text, useMantineTheme, Box, NavLink, createStyles, Title } from "@mantine/core";
+import { Flex, Center, useMantineTheme, Box, createStyles, Title } from "@mantine/core";
 import { ShowModsProps, ScrollContent, CONTENT_HEIGHT_PCT } from "./common";
 import Prereqs from "./prereqs/Prereqs";
 import { ModuleProps } from "./common";

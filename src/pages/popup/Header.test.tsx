@@ -1,11 +1,9 @@
-import { render, screen, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { it, expect, test, vi } from 'vitest';
-import { Content, ContentProps, ModDescription } from './Content';
-import { Module } from '@src/common';
-import { some,none, Option } from 'fp-ts/lib/Option';
+import { ContentProps } from './Content';
+import { none } from 'fp-ts/lib/Option';
 import '@testing-library/jest-dom';
 
-import { PREREQS_TESTID } from './prereqs/Prereqs';
 import { MODS_TESTID } from './mods/Mods';
 import { Header, TOGGLE_MODS_TESTID } from './Header';
 import { someModule } from './test-utils/test-utils';
