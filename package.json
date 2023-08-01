@@ -13,7 +13,7 @@
     "build:hmr": "rollup --config utils/reload/rollup.config.ts",
     "wss": "node utils/reload/initReloadServer.js",
     "dev": "npm run build:hmr && (run-p wss build:watch)",
-    "test": "jest"
+    "test": "vitest"
   },
   "type": "module",
   "dependencies": {
@@ -60,6 +60,7 @@
     "ts-loader": "9.4.2",
     "typescript": "4.8.3",
     "vite": "3.1.3",
+    "vitest": "^0.33.0",
     "ws": "8.13.0"
   }
 }
