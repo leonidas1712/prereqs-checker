@@ -30,7 +30,7 @@ function isNusMods(url_str:string):boolean {
     - https://stackoverflow.com/questions/53953820/how-does-s-reference-the-title-attribute-inside-the-helmet-component
 */
 
-function getModuleFromContentResponse(response:ContentScriptGetModuleResponse):Opt.Option<Module> {
+export function getModuleFromContentResponse(response:ContentScriptGetModuleResponse):Opt.Option<Module> {
     if (response.length == 0) {
         return Opt.none;
     }
