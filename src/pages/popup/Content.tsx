@@ -43,7 +43,7 @@ function ModDescription(props:ModuleProps) {
     return (
       <>
         <Center>
-        <Text c={theme.other.priOrange} fz={theme.other.titleFontSize} fw={theme.other.titleFontWeight}>{module.moduleCode}</Text>
+          <Title order={2} c={theme.other.priOrange} fz={theme.other.titleFontSize} fw={theme.other.titleFontWeight}>{module.moduleCode}</Title>
         </Center>
       </>
     );
