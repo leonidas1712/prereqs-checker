@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "@pages/popup/Popup.css";
-import { Box, Loader, useMantineTheme } from "@mantine/core";
+import { Box, Loader, useMantineTheme, Center } from "@mantine/core";
 
 import { Header } from "./Header";
 import { Content } from "./Content";
@@ -9,7 +9,9 @@ import { ModuleProps } from "./common";
 
 const Spinner = (props: { color: string }) => {
   return (
-    <Loader color={props.color}/>
+    <Center>
+      <Loader color={props.color} mt={10}/>
+    </Center>
   );
 };
 
