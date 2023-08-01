@@ -25,7 +25,6 @@ const common = {
     fontFamily: "-apple-system, BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
     priOrange:'#ff5138 ', //  Orange
     successGreen: '#28a745', // Notifs
-    modsBg:'#333',
     modCardBg:'#2BB34A', // From Planner
     modCardFontColor:'#0A2C12', // Planner
     warnCardBg:'#ffc107', // Planner warn card
@@ -40,6 +39,7 @@ export const DarkThemeOverride:MantineThemeOverride = {
     other: {
         ...common,
         secondaryFontColor:'#aaa', // paragraph font color
+        modsBg:'#333',
         bgColor:'#222324', // background color
         bgColorLight:'#292929', // for header
         fadedFontColor:'#7d7d7d', // faded font color,
