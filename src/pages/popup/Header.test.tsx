@@ -13,6 +13,7 @@ import { ResizeObserver } from './test-utils/test-utils';
 
 beforeAll(() => {
     window.ResizeObserver=ResizeObserver;
+    // https://stackoverflow.com/questions/39830580/jest-test-fails-typeerror-window-matchmedia-is-not-a-function
     Object.defineProperty(window, 'matchMedia', {
         writable: true,
         value: vi.fn().mockImplementation(query => ({
@@ -28,14 +29,28 @@ beforeAll(() => {
       });
 });
 
-it('renders toggle button when some module', () => {
+describe('when some module', () => {
     const content_props:ContentProps = {
         module:someModule(),
         showMods:false,
         setShowMods:vi.fn()
     };
-    const { getByTestId } = render(<Header {...content_props}/>);
-    expect(getByTestId(TOGGLE_MODS_TESTID)).toBeInTheDocument();
+
+    it("renders toggle mods button", () => {
+        const { getByTestId } = render(<Header {...content_props}/>);
+        expect(getByTestId(TOGGLE_MODS_TESTID)).toBeInTheDocument();
+    })
+});
+
+test("that toggle mods button is not visible when no module", () => {
+    const content_props:ContentProps = {
+        module:none,
+        showMods:false,
+        setShowMods:vi.fn()
+    };
+
+    const { queryByTestId } = render(<Header {...content_props}/>);
+    expect(queryByTestId(TOGGLE_MODS_TESTID)).toBe(null);
 });
 
 
