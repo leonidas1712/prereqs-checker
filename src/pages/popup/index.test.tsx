@@ -18,7 +18,7 @@ describe("parsing of module from content script response", () => {
         }, (module) => {
             expect(module.moduleCode).toBe("CS2113");
             expect(module.title).toBe('Software Engineering & Object-Oriented Programming');
-        });
+        })(res);
     });
 
     it("parses invalid input on NUSMods domain correctly (returns none)", () => {
@@ -30,7 +30,7 @@ describe("parsing of module from content script response", () => {
             expect(true).toBe(true);
         }, (_) => {
             throw new Error("getModuleFromContentResponse returned module on invalid input");
-        });
+        })(res);
     });
 
     it("parses invalid input NOT on NUSMods domain correctly (returns none)", () => {
@@ -42,7 +42,7 @@ describe("parsing of module from content script response", () => {
             expect(true).toBe(true);
         }, (_) => {
             throw new Error("getModuleFromContentResponse returned module on invalid input");
-        });
+        })(res);
     });
 });
 
