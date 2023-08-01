@@ -6,26 +6,10 @@ import '@testing-library/jest-dom';
 
 import { MODS_TESTID } from './mods/Mods';
 import { Header, TOGGLE_MODS_TESTID } from './Header';
-import { someModule } from './test-utils/test-utils';
+import { beforeFn, someModule } from './test-utils/test-utils';
 import { ResizeObserver } from './test-utils/test-utils';
 
-beforeAll(() => {
-    window.ResizeObserver=ResizeObserver;
-    // https://stackoverflow.com/questions/39830580/jest-test-fails-typeerror-window-matchmedia-is-not-a-function
-    Object.defineProperty(window, 'matchMedia', {
-        writable: true,
-        value: vi.fn().mockImplementation(query => ({
-          matches: false,
-          media: query,
-          onchange: null,
-          addListener: vi.fn(), 
-          removeListener: vi.fn(),
-          addEventListener: vi.fn(),
-          removeEventListener: vi.fn(),
-          dispatchEvent: vi.fn(),
-        })),
-      });
-});
+beforeFn();
 
 describe('when some module', () => {
     const content_props:ContentProps = {

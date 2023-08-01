@@ -14,7 +14,7 @@
     "wss": "node utils/reload/initReloadServer.js",
     "dev": "npm run build:hmr && (run-p wss build:watch)",
     "test": "npx vitest run",
-    "testv":"npx vitest run --reporter verbose --silent" 
+    "testv": "npx vitest run --reporter verbose --silent"
   },
   "type": "module",
   "dependencies": {
@@ -30,6 +30,7 @@
     "@rollup/plugin-typescript": "^8.5.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/chrome": "0.0.224",
     "@types/jest": "^29.0.3",
     "@types/node": "^18.17.1",
