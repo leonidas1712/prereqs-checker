@@ -24,18 +24,16 @@ function Root() {
 
   // To request for module upon initial page load (errs when not on nusmods.com)
   useEffect(() => {
-    requestModuleFromContentScript()
+    sleep(1000).then((res) => {
+      requestModuleFromContentScript()
       .then((res) => { 
         console.log("Res from content script:", res);
 
-        // Slow down to test loading spinner
-        sleep(2000).then((_) => {
-          // setLoading(false);
-          setModule(Opt.some(res));
-        });
+        setModule(Opt.some(res));
+ 
       })
       .catch((err) => console.log("Error while requesting:", err));
-
+    });
   },[]);
   return (
     <MantineProvider theme={DarkThemeOverride}>
