@@ -1,10 +1,31 @@
 import { Text, Tooltip, ActionIcon, useMantineTheme, Group, Grid, } from "@mantine/core";
 import { ShowModsProps, HEADER_HEIGHT_PCT } from "./common";
-import { FaEye, FaEyeSlash } from 'react-icons/fa6';
+import { FaEye, FaEyeSlash, FaSun } from 'react-icons/fa6';
 import { ModuleProps } from "./common";
 import { isSome } from "fp-ts/lib/Option";
+import { useState } from "react";
 
 export const TOGGLE_MODS_TESTID="toggle-mods";
+
+// function ToggleColorScheme() {
+//     const theme = useMantineTheme();
+    
+
+//     const click = () => {
+//       setIsDark(!isDark);
+//     };
+  
+//     const label=showMods ? "Hide mods" : "Show mods";
+//     const icon = showMods ? 
+//     <FaEyeSlash size={theme.other.iconSize} color={theme.other.secondaryFontColor}/> : 
+//     <FaEye size={theme.other.iconSize} color={theme.other.secondaryFontColor}/>;
+  
+//     return (
+//       <Tooltip label={label} color={theme.other.priOrange}>
+//         <ActionIcon component="button" onClick={click} color="yellow" data-testid={TOGGLE_MODS_TESTID}>{icon}</ActionIcon>
+//       </Tooltip>
+//     )
+// }
 
 function ToggleModsBtn(props:ShowModsProps) {
     const { showMods, setShowMods } = props;

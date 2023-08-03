@@ -20,6 +20,7 @@ refreshOnUpdate("pages/popup");
 function Root() {
   const [module, setModule] = useState<Opt.Option<Module>>(Opt.none);
   const [loading, setLoading] = useState(true);
+  const [isDark, setIsDark] = useState(true);
 
   // To request for module upon initial page load (errs when not on nusmods.com)
   useEffect(() => {
@@ -36,7 +37,7 @@ function Root() {
   },[]);
   return (
     <MantineProvider theme={DarkThemeOverride}>
-        <Popup module={module} loading={loading} />
+        <Popup module={module} loading={loading} isDark={isDark} setIsDark={setIsDark} />
     </MantineProvider>
   )
 }

@@ -15,7 +15,13 @@ const Spinner = (props: { color: string }) => {
   );
 };
 
-const Popup = (props:ModuleProps & { loading:boolean }) => {
+type PopupProps = ModuleProps & {
+  loading:boolean,
+  isDark:boolean,
+  setIsDark:React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const Popup = (props:PopupProps) => {
   // useEffect(() => {
   //   chrome.storage.local.get(["key"]).then((result:{ key: ModulesRecord}) => {
   //     console.log("Value from popup is: " + result.key['CS3233']);
