@@ -15,6 +15,11 @@ refreshOnUpdate("pages/popup");
 // Refresh the useEffect here when content title changes
 // React.SetStateAction<Opt.Option<Module>>
 
+async function getCurrentTab() {
+  const queryOptions = { active: true, lastFocusedWindow: true };
+  // `tab` will either be a `tabs.Tab` instance or `undefined`.
+  return chrome.tabs.query(queryOptions);
+}
 
 // set module here: pass down Option<Module> to popup
 function Root() {
@@ -25,7 +30,12 @@ function Root() {
   useEffect(() => {
     console.log("Ran on effect mount");
     return () => {
-      console.log("Ran on effect cleanup");
+      getCurrentTab().then((tabs) => {
+        chrome.tabs.sendMessage(tabs[0].id, "Message from index unmount");
+        console.log("Ran on effect cleanup");
+      }).catch((err) => {
+        console.log("Couldn't get current tab upon index unmount");
+      });
     };
   });
 
