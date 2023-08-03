@@ -48,3 +48,15 @@ export const DarkThemeOverride:MantineThemeOverride = {
         headerFontColor:"white"
     }
 };
+
+export const LightThemeOverride:MantineThemeOverride = {
+    other: {
+        ...common,
+        secondaryFontColor:' #69707a', // paragraph font color - done
+        modsBg:'#f3f5f',
+        bgColor:'white', // background color - done
+        bgColorLight:'#f3f5f8', // for header - done
+        fadedFontColor:'#666', // faded font color, - done
+        headerFontColor:'#69707a' // - done
+    }
+}
