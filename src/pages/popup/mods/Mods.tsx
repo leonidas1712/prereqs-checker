@@ -1,5 +1,5 @@
 // Search bar + Grid of mod cards
-import { Repeat } from "../common";
+import { Repeat } from "../utils/common";
 
 export const MODS_TESTID="mods";
 export default function Mods() {

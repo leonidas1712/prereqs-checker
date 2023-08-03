@@ -1,6 +1,6 @@
 import { Stack, Container, Text, Center, useMantineTheme} from "@mantine/core";
-import { ScrollContent, Repeat } from "../common"
-import { ModuleProps } from "../common";
+import { ScrollContent, Repeat } from "../utils/common"
+import { ModuleProps } from "../utils/common";
 import { match } from "fp-ts/lib/Option";
 import { Module } from "@src/common";
 

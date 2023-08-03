@@ -1,7 +1,7 @@
 import { Flex, Center, useMantineTheme, Box, createStyles, Title } from "@mantine/core";
-import { ShowModsProps, ScrollContent, CONTENT_HEIGHT_PCT } from "./common";
+import { ShowModsProps, ScrollContent, CONTENT_HEIGHT_PCT } from "./utils/common";
 import Prereqs from "./prereqs/Prereqs";
-import { ModuleProps } from "./common";
+import { ModuleProps } from "./utils/common";
 import { match, isNone } from "fp-ts/lib/Option";
 import { Module } from "@src/common";
 import Mods from "./mods/Mods";

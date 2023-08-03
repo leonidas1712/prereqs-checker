@@ -4,7 +4,7 @@ import { Box, Loader, useMantineTheme, Center } from "@mantine/core";
 
 import { Header } from "./Header";
 import { Content } from "./Content";
-import { ModuleProps } from "./common";
+import { ModuleProps } from "./utils/common";
 // change Box bg to use theme
 
 const Spinner = (props: { color: string }) => {

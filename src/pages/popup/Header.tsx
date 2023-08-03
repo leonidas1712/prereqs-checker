@@ -1,7 +1,7 @@
 import { Text, Tooltip, ActionIcon, useMantineTheme, Group, Grid, } from "@mantine/core";
-import { ShowModsProps, HEADER_HEIGHT_PCT } from "./common";
+import { ShowModsProps, HEADER_HEIGHT_PCT } from "./utils/common";
 import { FaEye, FaEyeSlash, FaSun, FaMoon } from 'react-icons/fa6';
-import { ModuleProps } from "./common";
+import { ModuleProps } from "./utils/common";
 import { isSome } from "fp-ts/lib/Option";
 import { useState } from "react";
 import { ColorSchemeProps } from "./Popup";

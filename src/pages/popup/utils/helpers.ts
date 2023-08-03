@@ -3,7 +3,7 @@ import * as Opt from "fp-ts/lib/Option";
 import { NUSMODS_HOSTNAME } from "../../../common"
 import { ContentScriptGetModuleResponse, GET_MODULE, Module } from "@src/common";
 import { pipe } from "fp-ts/lib/function";
-import { MOD_CAPTURE_REGEX, is_valid_mod_code } from "../common";
+import { MOD_CAPTURE_REGEX, is_valid_mod_code } from "./common";
 
 // Check if tab.url corresponds to NUSMods
 function isNusMods(url_str:string):boolean {
