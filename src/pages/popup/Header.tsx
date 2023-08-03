@@ -1,6 +1,6 @@
 import { Text, Tooltip, ActionIcon, useMantineTheme, Group, Grid, } from "@mantine/core";
 import { ShowModsProps, HEADER_HEIGHT_PCT } from "./common";
-import { FaEye, FaEyeSlash, FaSun } from 'react-icons/fa6';
+import { FaEye, FaEyeSlash, FaSun, FaMoon } from 'react-icons/fa6';
 import { ModuleProps } from "./common";
 import { isSome } from "fp-ts/lib/Option";
 import { useState } from "react";
@@ -44,7 +44,7 @@ function ToggleModsBtn(props:ShowModsProps) {
   
     return (
       <Tooltip label={label} color={theme.other.priOrange}>
-        <ActionIcon component="button" onClick={click} color="yellow" data-testid={TOGGLE_MODS_TESTID}>{icon}</ActionIcon>
+        <ActionIcon size="lg" component="button" onClick={click} data-testid={TOGGLE_MODS_TESTID}>{icon}</ActionIcon>
       </Tooltip>
     )
 }
@@ -57,7 +57,9 @@ export function Header(props:HeaderProps) {
         <Grid w="100%" grow>
 
           {/* So that title appears in center */}
-          <Grid.Col span={4}></Grid.Col> 
+          <Grid.Col span={4}>
+          <ActionIcon size="lg" component="button">{<FaMoon/>}</ActionIcon>
+          </Grid.Col> 
 
           <Grid.Col span={4}>
 
