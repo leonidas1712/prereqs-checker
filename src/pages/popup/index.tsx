@@ -5,7 +5,7 @@ import Popup from "@pages/popup/Popup";
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
 import { MantineProvider, Loader } from "@mantine/core";
 import { requestModuleFromContentScript } from "./helpers";
-import { DarkThemeOverride } from "./themes";
+import { DarkThemeOverride, LightThemeOverride } from "./themes";
 import * as Opt from "fp-ts/lib/Option";
 import { Module } from "@src/common";
 
