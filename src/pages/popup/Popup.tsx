@@ -15,10 +15,12 @@ const Spinner = (props: { color: string }) => {
   );
 };
 
-type PopupProps = ModuleProps & {
-  loading:boolean,
+export type ColorSchemeProps = {
   isDark:boolean,
   setIsDark:React.Dispatch<React.SetStateAction<boolean>>
+}
+type PopupProps = ModuleProps & ColorSchemeProps & {
+  loading:boolean,
 }
 
 const Popup = (props:PopupProps) => {
@@ -35,7 +37,13 @@ const Popup = (props:PopupProps) => {
   const [showMods, setShowMods] = useState(false);
   return (
       <Box h="100%" bg={theme.other.bgColor}>  
-        <Header module={props.module} showMods={showMods} setShowMods={setShowMods}/>
+        <Header 
+        module={props.module} 
+        showMods={showMods} 
+        setShowMods={setShowMods}
+        isDark={props.isDark}
+        setIsDark={props.setIsDark}
+        />
         {props.loading ? <Spinner color={theme.other.priOrange} /> : <Content module={props.module} showMods={showMods} setShowMods={setShowMods}/> }
       </Box>
   );

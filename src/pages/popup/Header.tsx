@@ -4,6 +4,7 @@ import { FaEye, FaEyeSlash, FaSun } from 'react-icons/fa6';
 import { ModuleProps } from "./common";
 import { isSome } from "fp-ts/lib/Option";
 import { useState } from "react";
+import { ColorSchemeProps } from "./Popup";
 
 export const TOGGLE_MODS_TESTID="toggle-mods";
 
@@ -48,7 +49,8 @@ function ToggleModsBtn(props:ShowModsProps) {
     )
 }
 
-export function Header(props:ModuleProps & ShowModsProps) {
+type HeaderProps = ModuleProps & ShowModsProps & ColorSchemeProps;
+export function Header(props:HeaderProps) {
     const theme = useMantineTheme();
     return (
       <Group h={HEADER_HEIGHT_PCT} bg={theme.other.bgColorLight} position="center" align="center">
