@@ -36,7 +36,7 @@ function Root() {
     });
   },[]);
   return (
-    <MantineProvider theme={DarkThemeOverride}>
+    <MantineProvider theme={isDark ? DarkThemeOverride : LightThemeOverride}>
         <Popup module={module} loading={loading} isDark={isDark} setIsDark={setIsDark} />
     </MantineProvider>
   )
