@@ -8,25 +8,24 @@ import { ColorSchemeProps } from "./Popup";
 
 export const TOGGLE_MODS_TESTID="toggle-mods";
 
-// function ToggleColorScheme() {
-//     const theme = useMantineTheme();
+function ToggleColorScheme(props: ColorSchemeProps) {
+    const theme = useMantineTheme();
+    const { isDark, setIsDark } = props;
     
 
-//     const click = () => {
-//       setIsDark(!isDark);
-//     };
+    const click = () => {
+      setIsDark(!isDark);
+    };
   
-//     const label=showMods ? "Hide mods" : "Show mods";
-//     const icon = showMods ? 
-//     <FaEyeSlash size={theme.other.iconSize} color={theme.other.secondaryFontColor}/> : 
-//     <FaEye size={theme.other.iconSize} color={theme.other.secondaryFontColor}/>;
+    const label=isDark ? "Light mode" : "Dark mode";
+    const icon = isDark ? <FaSun /> : <FaMoon />;
   
-//     return (
-//       <Tooltip label={label} color={theme.other.priOrange}>
-//         <ActionIcon component="button" onClick={click} color="yellow" data-testid={TOGGLE_MODS_TESTID}>{icon}</ActionIcon>
-//       </Tooltip>
-//     )
-// }
+    return (
+      <Tooltip label={label} color={theme.other.priOrange}>
+        <ActionIcon component="button" onClick={click} color="yellow" data-testid={TOGGLE_MODS_TESTID}>{icon}</ActionIcon>
+      </Tooltip>
+    )
+}
 
 function ToggleModsBtn(props:ShowModsProps) {
     const { showMods, setShowMods } = props;
