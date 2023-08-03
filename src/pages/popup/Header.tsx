@@ -23,7 +23,7 @@ function ToggleColorScheme(props: ColorSchemeProps) {
   
     return (
       <Tooltip label={label} color={theme.other.priOrange}>
-        <ActionIcon component="button" onClick={click}>{icon}</ActionIcon>
+        <ActionIcon variant="outline" component="button" onClick={click}>{icon}</ActionIcon>
       </Tooltip>
     )
 }
