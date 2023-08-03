@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { expect, test, vi, it } from 'vitest';
-import { getModuleFromContentResponse } from '../pages/popup/helpers';
+import { getModuleFromContentResponse } from '../pages/popup/utils/helpers';
 import { some, none, match } from 'fp-ts/lib/Option';
 import '@testing-library/jest-dom';
 

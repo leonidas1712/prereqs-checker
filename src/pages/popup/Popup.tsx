@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "@pages/popup/Popup.css";
+import "@pages/popup/style/Popup.css";
 import { Box, Loader, useMantineTheme, Center } from "@mantine/core";
 
 import { Header } from "./Header";

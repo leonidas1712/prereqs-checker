@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import "@pages/popup/index.css";
+import "@pages/popup/style/index.css";
 import Popup from "@pages/popup/Popup";
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
-import { MantineProvider, Loader } from "@mantine/core";
-import { requestModuleFromContentScript } from "./helpers";
-import { DarkThemeOverride, LightThemeOverride } from "./themes";
+import { MantineProvider } from "@mantine/core";
+import { requestModuleFromContentScript } from "./utils/helpers";
+import { DarkThemeOverride, LightThemeOverride } from "./utils/themes";
 import * as Opt from "fp-ts/lib/Option";
 import { Module } from "@src/common";
 
@@ -21,6 +21,13 @@ function Root() {
   const [module, setModule] = useState<Opt.Option<Module>>(Opt.none);
   const [loading, setLoading] = useState(true);
   const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    console.log("Ran on effect mount");
+    return () => {
+      console.log("Ran on effect cleanup");
+    };
+  });
 
   // To request for module upon initial page load (errs when not on nusmods.com)
   useEffect(() => {
