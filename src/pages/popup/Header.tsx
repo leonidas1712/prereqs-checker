@@ -8,6 +8,7 @@ import { ColorSchemeProps } from "./Popup";
 
 export const TOGGLE_MODS_TESTID="toggle-mods";
 
+// Light more or dark mode
 function ToggleColorScheme(props: ColorSchemeProps) {
     const theme = useMantineTheme();
     const { isDark, setIsDark } = props;
@@ -22,11 +23,12 @@ function ToggleColorScheme(props: ColorSchemeProps) {
   
     return (
       <Tooltip label={label} color={theme.other.priOrange}>
-        <ActionIcon component="button" onClick={click} color="yellow" data-testid={TOGGLE_MODS_TESTID}>{icon}</ActionIcon>
+        <ActionIcon component="button" onClick={click}>{icon}</ActionIcon>
       </Tooltip>
     )
 }
 
+// Toggle mods (show or hide)
 function ToggleModsBtn(props:ShowModsProps) {
     const { showMods, setShowMods } = props;
     const theme = useMantineTheme();
@@ -57,7 +59,7 @@ export function Header(props:HeaderProps) {
 
           {/* So that title appears in center */}
           <Grid.Col span={4}>
-          <ActionIcon size="lg" component="button">{<FaMoon/>}</ActionIcon>
+            <ToggleColorScheme isDark={props.isDark} setIsDark={props.setIsDark}/>
           </Grid.Col> 
 
           <Grid.Col span={4}>
