@@ -45,7 +45,7 @@ function ToggleModsBtn(props:ShowModsProps) {
   
     return (
       <Tooltip label={label} color={theme.other.priOrange}>
-        <ActionIcon size="lg" component="button" onClick={click} data-testid={TOGGLE_MODS_TESTID}>{icon}</ActionIcon>
+        <ActionIcon size="md" component="button" onClick={click} data-testid={TOGGLE_MODS_TESTID}>{icon}</ActionIcon>
       </Tooltip>
     )
 }
