@@ -12,6 +12,7 @@ export const TOGGLE_MODS_TESTID="toggle-mods";
 function ToggleColorScheme(props: ColorSchemeProps) {
     const theme = useMantineTheme();
     const { isDark, setIsDark } = props;
+    // Add commment
     
 
     const click = () => {
