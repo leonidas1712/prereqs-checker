@@ -80,8 +80,7 @@ export type ContentProps = ShowModsProps & ModuleProps;
 export function Content(props:ContentProps) {
     const { showMods, setShowMods } = props;
     console.log("Opt module within <Content/>:", props.module);
-    const { classes } = useStyles();
-
+    
     const theme = useMantineTheme();
 
     const MODS_FLEX='1.35' // separate: when mods not shown don't apply this
