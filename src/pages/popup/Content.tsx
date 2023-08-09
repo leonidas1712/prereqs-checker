@@ -1,5 +1,5 @@
 import { Flex, Center, useMantineTheme, Box, createStyles, Title, MantineTheme } from "@mantine/core";
-import { ShowModsProps, ScrollContent, CONTENT_HEIGHT_PCT, Themer } from "./utils/common";
+import { ShowModsProps, ScrollContent, CONTENT_HEIGHT_PCT, ThemedStyler } from "./utils/common";
 import Prereqs from "./prereqs/Prereqs";
 import { ModuleProps } from "./utils/common";
 import { match, isNone } from "fp-ts/lib/Option";
@@ -56,7 +56,8 @@ export function ModDescription(props:ModuleProps) {
   );
 }
 
-const prereqTheme:Themer = (theme) => {
+// styles for prereqs scroll area and mods scroll area
+const prereqStyler:ThemedStyler = (theme) => {
   return {
     flex: '1',
     backgroundColor:theme.other.bgColor,
@@ -64,7 +65,7 @@ const prereqTheme:Themer = (theme) => {
   }
 }
 
-const modsTheme:Themer = (theme) => {
+const modsStyler:ThemedStyler = (theme) => {
   return {
     backgroundColor:theme.other.modsBg,
     color:theme.other.secondaryFontColor
@@ -83,21 +84,9 @@ export function Content(props:ContentProps) {
 
     const theme = useMantineTheme();
 
-
-  // styles for prereqs scroll area and mods scroll area
-  // flex ratio defines ratio of scroll area sizes
-  // not useStyles because we need actual objects
-  const prereqStyle:React.CSSProperties = {
-    flex: '1',
-    backgroundColor:theme.other.bgColor,
-    color:theme.other.priOrange
-  };
-
-  const MODS_FLEX='1.35'
-  const modsStyle:React.CSSProperties = {
-    backgroundColor:theme.other.modsBg,
-    color:theme.other.secondaryFontColor
-  };
+    const MODS_FLEX='1.35' // separate: when mods not shown don't apply this
+    const prereqStyle = prereqStyler(theme);
+    const modsStyle = modsStyler(theme);
 
     const prereqsMatcher = match<Module,JSX.Element>(
     // No module -> can't show prereqs, just empty

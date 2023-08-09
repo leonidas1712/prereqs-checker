@@ -79,4 +79,4 @@ export const Spinner = (props: { color: string }) => {
 };
 
 // takes theme, returns object for react style
-export type Themer = (theme:MantineTheme) => React.CSSProperties;
+export type ThemedStyler = (theme:MantineTheme) => React.CSSProperties;
