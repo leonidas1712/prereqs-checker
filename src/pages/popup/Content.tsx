@@ -1,5 +1,5 @@
-import { Flex, Center, useMantineTheme, Box, createStyles, Title } from "@mantine/core";
-import { ShowModsProps, ScrollContent, CONTENT_HEIGHT_PCT } from "./utils/common";
+import { Flex, Center, useMantineTheme, Box, createStyles, Title, MantineTheme } from "@mantine/core";
+import { ShowModsProps, ScrollContent, CONTENT_HEIGHT_PCT, Themer } from "./utils/common";
 import Prereqs from "./prereqs/Prereqs";
 import { ModuleProps } from "./utils/common";
 import { match, isNone } from "fp-ts/lib/Option";
@@ -56,6 +56,22 @@ export function ModDescription(props:ModuleProps) {
   );
 }
 
+const prereqTheme:Themer = (theme) => {
+  return {
+    flex: '1',
+    backgroundColor:theme.other.bgColor,
+    color:theme.other.priOrange
+  }
+}
+
+const modsTheme = (theme):Themer => {
+  return {
+    backgroundColor:theme.other.modsBg,
+    color:theme.other.secondaryFontColor
+  };
+}
+
+
 // Content component containing prereqs validation and modules CRUD
   // when no module: show view with message at top, divider, then Mods.tsx and hide mods toggle button
   // have module: normal, just split in half etc
@@ -97,7 +113,6 @@ export function Content(props:ContentProps) {
     });
 
     // Fetch prereq tree here if 
-  
     return (
       <>
       {/* Styles applied outside because applied to entire ScrollArea */}

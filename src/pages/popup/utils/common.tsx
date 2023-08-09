@@ -1,6 +1,5 @@
 // File for common utils
-
-import { Text, ScrollArea, Center, Loader } from "@mantine/core";
+import { Text, ScrollArea, Center, Loader, MantineTheme } from "@mantine/core";
 import { replicate } from "fp-ts/lib/Array";
 import * as Opt from "fp-ts/lib/Option";
 import { Module } from "@src/common";
@@ -77,4 +76,7 @@ export const Spinner = (props: { color: string }) => {
         <Loader color={props.color} mt={10}/>
       </Center>
     );
-  };
+};
+
+// takes theme, returns object for react style
+export type Themer = (theme:MantineTheme) => React.CSSProperties;
