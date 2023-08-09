@@ -64,7 +64,7 @@ const prereqTheme:Themer = (theme) => {
   }
 }
 
-const modsTheme = (theme):Themer => {
+const modsTheme:Themer = (theme) => {
   return {
     backgroundColor:theme.other.modsBg,
     color:theme.other.secondaryFontColor
