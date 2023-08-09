@@ -27,17 +27,6 @@ function Root() {
   const [loading, setLoading] = useState(true);
   const [isDark, setIsDark] = useState(true);
 
-  useEffect(() => {
-    console.log("Ran on effect mount");
-    return () => {
-      getCurrentTab().then((tabs) => {
-        chrome.tabs.sendMessage(tabs[0].id, "Message from index unmount");
-        console.log("Ran on effect cleanup");
-      }).catch((err) => {
-        console.log("Couldn't get current tab upon index unmount");
-      });
-    };
-  });
 
   // To request for module upon initial page load (errs when not on nusmods.com)
   useEffect(() => {

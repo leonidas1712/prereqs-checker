@@ -24,13 +24,6 @@ type PopupProps = ModuleProps & ColorSchemeProps & {
 }
 
 const Popup = (props:PopupProps) => {
-  // useEffect(() => {
-  //   chrome.storage.local.get(["key"]).then((result:{ key: ModulesRecord}) => {
-  //     console.log("Value from popup is: " + result.key['CS3233']);
-  //     console.log("Num of keys:", Object.keys(result.key).length);
-  //   });
-  // });
-
   const theme = useMantineTheme();
 
   // initially don't show mods
