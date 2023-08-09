@@ -20,7 +20,7 @@ export async function get_mods():Promise<ModulesRecord> {
 }
 
 // Get mods and store in chrome.local
-// Make a change
+// Make a change again
 export const ALL_MODS = "all_mods";
 export async function store_mods_list() {
     await get_mods().then((res) => {
